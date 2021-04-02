@@ -1,0 +1,96 @@
+/* 언제든지 자유롭게 수정하셔도 됩니다 */
+
+html{
+    font-size: 62.5%; /* 16px * 62.5 = 10px = 1rem */
+    box-sizing: border-box;
+}
+body{
+    font: 1.6rem;
+    height: 100vh;
+    margin: 0;
+}
+
+/* layout */
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+.row.center {
+  justify-content: center;
+}   
+.grid-container{
+    display: grid;
+    grid-template-areas: 
+    "header"
+    "main"
+    "footer";
+    grid-template-columns: 1fr;
+    /* header main footer를 각각 아래의 크기의 영역으로 나눔 */
+    grid-template-rows: 5rem 1fr 4rem; 
+    height: 100%;
+}
+.header{
+    grid-area: header;
+    background-color: #ffffff;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 3rem;
+}
+.brand a{
+    color: #06055e;
+    font-size: 2.5rem;
+    font-weight: bold;
+    text-decoration: none;
+    font-family: cursive;
+    text-align: center;
+    letter-spacing: 3px;
+}
+.header-links a{
+    color: #000806;
+    font-size: 1.4rem;
+    text-decoration: none;
+    margin-right: 10px;
+}
+.header-links a:hover{
+    color:rgb(14, 153, 77);
+}
+
+.footer{
+    grid-area: footer;
+    background-color: darkslategray;
+    color: #ffffff;
+    font-size: 1.4rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* images */
+
+img.medium {
+    max-width: 20rem;
+    width: 100%;
+  }
+  
+  /* Card - 각각 상품을 담는 프레임*/
+.card {
+    border: 0.5rem #c0c0c0 solid;
+    background-color: #f8f8f8;
+    border-radius: 0rem;
+    margin: 3rem;
+    max-width: 25rem;
+    text-align: center;
+    position: relative;
+  }
+.card-body {
+    padding: 0.3rem;
+  }
+.card-body > * {
+    margin-bottom: 1rem;
+  }
+.price {
+    font-size: 1.3rem;
+  }
+ 
