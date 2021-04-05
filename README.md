@@ -22,7 +22,7 @@ backlog
 -1차 목표 완료하기
 
 issue
-
+-README 파일로 인해 매번 PUSH마다 README 파일이 사라짐 --> README를 따로 남기는 BRANCH를 두어도 
 
 
 각 진행상황별 내용 :
