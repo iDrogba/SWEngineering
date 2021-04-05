@@ -22,6 +22,6 @@ backlog 및 issue
 
 각 진행상황별 내용 :
 
-part11 -> eslint vscode 에서 설치
+part11 -> eslint ( 코드잘못된 부분 알려줌 ) vscode 에서 설치
 
 참고 / Udemy 및 https://www.youtube.com/watch?v=TRCDsB9i3bI
