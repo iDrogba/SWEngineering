@@ -1,0 +1,168 @@
+/* frontend-public-index.html 을 꾸며줄 index.css 파일 */
+
+html{
+  font-size: 62.5%;       /* 16px x 62.5% = 10px = 1rem 이렇게 1rem을 10ox로 설정*/
+  box-sizing: border-box; /* box-sizing은 박스의 크기를 어떤 것을 기준으로 계산할지를 정하는 속성 */
+}
+body{
+  margin: 0;                                  /* 위쪽 공란 */
+  height: 100vh;                              /* 화면의 100분의 1 = 1vh로 100vh로 전체를 사용하낟. */
+  font-size: 1.6rem;                          /* 1.6rem으로 16px */
+  font-family: Helvetica, Arial, sans-serif;  /* 폰트 , 기본값 , 상속 요소 */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+#root {
+  height: 100%;
+}
+/* Layout */
+
+.grid-container{
+  display: grid;                      /* 가로,세로 둘다 이용하는 레이아웃 */
+  grid-template-areas:                /* 작성한 구성 그대로 템플릿을 만드는 방식 */
+      'header' 
+      'main' 
+      'footer';
+  grid-template-columns: 1fr;         /* 템플릿의 행을 해당 비율로 표현, fr=비율을 뜻할 때 사용 */
+  grid-template-rows: 5rem 1fr 5rem;  /* 템플릿의 행을 표현 , 5rem + 나머지(1fr) + 5rem으로 구성됨 */
+  height: 100%;                       /* 높이 100%활용 */
+}
+header{
+  grid-area: header;                  /* 그리드에서 header임을 뜻함*/
+  background-color: #203040;        /* 배경 색 */
+}
+main{
+  grid-area: main;                    /* 그리드에서 main임을 뜻함*/
+  padding: 1rem;                      /* 내부의 공간에서 상하좌우로 1rem만큼의 여백 생성 */
+}
+footer{
+  grid-area: footer;                  /* 그리드에서 fooder임을 뜻함*/
+  background-color: #203040;        /* 배경 색 */
+  color: #ffffff;                   /* 글씨의 색상 */
+}
+/* 공통 */
+h1{                                   /* card-body의 첫번째 문장 */
+  font-size: 1.8rem;                  /* 글씨 크기 */
+  padding: 1rem 0;                    /* 상하 공간 */
+}
+h2{                                   /* card-body의 두번째 문장 */
+  font-size: 1.6rem;                  /* 글씨 크기 */
+  padding: 1rem 0;                    /* 상하 공간 */
+}
+a{                                    /* 꾸밈용 */
+  text-decoration: none;              /* 일반상태 꾸밈 없음 */
+}
+a:hover {                             /* 링크에 마우스 포인터를 올려 놓았을 때 */
+  color: #ff8000;                   /* 색상 변함 */ 
+}
+ul{                                   /* ul */
+  padding: 0;
+  margin: 0;
+  list-style-type: none;
+}
+li {                                  /* li */
+  margin-top: 1rem;
+}
+button {
+  padding: 1rem;
+  border-radius: 0.5rem;
+  border: 0.1rem #a4a4a4 solid;
+  font-size: 1.6rem;                          /* 1.6rem으로 16px */
+  font-family: Helvetica, Arial, sans-serif;  /* 폰트 , 기본값 , 상속 요소 */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: #f8f8f8;
+  cursor: pointer;
+}
+button:hover{
+  border: 0.1rem #404040 solid;
+}
+button.primary{
+  background-color: #f0c040;
+}
+button.block{
+  width: 100%;
+}
+/* header */
+header a{                             /* a를 header에 적용 */
+  color: #ffffff;                   /* 글씨 색상 적용 */
+  padding: 1rem;                      /* 상하좌우 공간 1rem */
+}
+a.brand{                              /* brand라는 클래스 생성 */
+  color: #ffffff;                   /* 글씨 색상 */
+  font-size: 3rem;                    /* 글씨 크기 */
+  font-weight : bold;                 /* 글씨 두껍게 */
+}
+.row{                                 /* 행 설정 */
+  display: flex;                      /* 양쪽 폭 전부 사용 */
+  flex-wrap: wrap;                    /* items를 여러 줄 묶음 */
+  justify-content: space-between;     /* item은 items들 사이에만 여유 공간을 두고 배치 */
+  align-items: center;                /* item은 한 가운데에 배치 */
+}
+.row.center {                         /* 행 설정의 서브 클래스로 footer에 적용 */
+  justify-content: center;            /* item을 중앙에 위치시킴 */
+}
+.row.top{
+  align-items: flex-start;
+}
+.col-1{                               /* ProductScreen의 description */
+  flex: 1 1 25rem;
+}
+.col-2{                               /* ProductScreen의 Add to Cart */
+  flex: 2 1 50rem;
+}
+/* image 설정 */
+img{
+  border-radius: 0.5rem;              /* img의 경계의 0.5rem만큼만 둥글게 함 */
+}
+img.medium {
+  max-width: 29rem;                   /* 최대 폭 */
+  width: 100%;                        /* 폭 활용도 */
+}
+img.large {                           /* Product Screen에서의 image 설정 */
+  width: 100%;
+}
+/* Card 설정 */
+.card{
+  border: 0.1rem #c0c0c0 solid;     /* 경계 폭 / 색상 / 굵기 */
+  background-color: #f8f8f8;        /* 배경 색 */
+  border-radius: 0.5rem;              /* img의 경계의 0.5rem만큼만 둥글게 함 */
+  margin: 1rem;                       /* 상하좌우 폭 */
+}
+.card-body {
+  padding: 1rem;                      /* 상하좌우 폭 */
+}
+.card-body > * {                      /* 모든 card-body는 해당 설정을 받음(?) */
+  margin-bottom: 0.5rem;              /* 아래 공간 */
+}
+.price{                               /* 가격 설정 */
+  font-size: 2rem;                    /* 글씨 크기 */
+}
+/* Rating */
+.rating span{                         /* 모든 rating에 적용 */
+  color: #f0c040;                   /* 글씨 색상, 별의 색깔 */
+  margin: 0.1rem;                     /* 상하좌우 폭 */
+}
+.rating span:last-child{              /* span의 마지막 요소 */
+  color: #404040;
+}
+/* Alert 경고 */
+.success{
+  color: #20a020;
+}
+.danger{
+  color: #a02020;
+}
+.alert{
+  padding: 1rem;
+  border: 0.1rem solid transparent;
+  border-radius: 0.5rem;
+}
+.alert-info{
+  color: #2020a0;
+  background-color: #e0e0ff;
+}
+.alert-danger{
+  color: #a02020;
+  background-color: #ffe0e0e0;
+}
