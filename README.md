@@ -14,14 +14,20 @@ part 1 ~ 4  / 이혜빈
 
 part 4 ~ 10 / 정경수
 
+part 11 ~ 12 / 강동현
 
 
-backlog 및 issue
+
+backlog
+-1차 목표 완료하기
+
+issue
 
 
 
 각 진행상황별 내용 :
 
-part11 -> eslint ( 코드잘못된 부분 알려줌 ) vscode 에서 설치
+part11 -> eslint ( 코드잘못된 부분 알려주는 기능 ) 설치
+part12 -> react redux ( react-redux / react-thunk ) 설치 및 redux 세팅
 
 참고 / Udemy 및 https://www.youtube.com/watch?v=TRCDsB9i3bI
