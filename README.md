@@ -6,8 +6,10 @@ SE Project
 
 1차 목표 : part1 ~ part35
 
-진행상황:
+진행상황 :
+
 part 1 ~ 4  / 이혜빈
+
 part 4 ~ 10 / 정경수
 
 
