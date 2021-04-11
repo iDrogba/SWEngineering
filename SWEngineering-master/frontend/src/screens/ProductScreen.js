@@ -32,7 +32,7 @@ export default function ProductScreen(props) {
         <MessageBox variant="danger">{error}</MessageBox>
       ) : (
         <div>
-          <Link to="/">Back to result</Link>
+          <Link to="/">이전으로 돌아가기</Link>
           <div className="row top">
             <div className="col-2">
               <img

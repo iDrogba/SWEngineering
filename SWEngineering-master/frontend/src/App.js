@@ -1,7 +1,7 @@
 /* data.js에서 data를 참고해 product의 세부 정보를 표현 */
 
 import React from 'react';
-import {useSelector} from 'react-router-dom'
+import {useSelector} from 'react-redux'
 import {BrowserRouter, Link, Route } from 'react-router-dom';
 import CartScreen from './screens/CartScreen';
 import HomeScreen from './screens/HomeScreen';
@@ -16,17 +16,17 @@ function App() {
       <header className="row">
         <div>
         <Link className="brand" to="/">
-          amazona
+         🛒23조_Shop
           </Link>
         </div>
         <div>
         <Link to="/cart">
-               Cart
+               장바구니
                {cartItems.length > 0 && (
                  <span className="badge">{cartItems.length}</span>
                )}
              </Link>
-             <Link to="/signin">Sign In</Link>
+             <Link to="/signin">로그인</Link>
         </div>
       </header>
       <main>
@@ -34,7 +34,7 @@ function App() {
         <Route path="/product/:id" component={ProductScreen}></Route>
         <Route path="/" component={HomeScreen} exact></Route>
       </main>
-      <footer className="row center">All right reserved</footer>
+      <footer className="row center">23조 All rights reserved</footer>
     </div>
     </BrowserRouter>
   );
