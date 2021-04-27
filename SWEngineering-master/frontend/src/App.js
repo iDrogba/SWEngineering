@@ -6,8 +6,10 @@ import {BrowserRouter, Link, Route } from 'react-router-dom';
 import { signout } from './actions/userActions';
 import CartScreen from './screens/CartScreen';
 import HomeScreen from './screens/HomeScreen';
+import PaymentMethodScreen from './screens/PaymentMethodScreen';
 import ProductScreen from './screens/ProductScreen';
 import RegisterScreen from './screens/RegisterScreen';
+import ShippingAddressScreen from './screens/ShippingAddressScreen';
 import SigninScreen from './screens/SigninScreen';
 
 function App() {
@@ -23,13 +25,13 @@ function App() {
   return (
     <BrowserRouter>
     <div className="grid-container">
-      <header className="row">
-        <div>
+      <header >
+        <div className="title">
         <Link className="brand" to="/">
          🛒23조_Shop
           </Link>
         </div>
-        <div>
+        <div className="topmenu">
         <Link to="/cart">
                장바구니
                {cartItems.length > 0 && (
@@ -50,6 +52,9 @@ function App() {
               ) : (
                 <Link to="/signin">로그인</Link>
               )}
+          </div>
+        <div className="row">
+        
         </div>
       </header>
       <main>
@@ -57,6 +62,8 @@ function App() {
         <Route path="/product/:id" component={ProductScreen}></Route>
         <Route path="/signin" component={SigninScreen}></Route>
         <Route path="/register" component={RegisterScreen}></Route>
+        <Route path="/shipping" component={ShippingAddressScreen}></Route>
+        <Route path="/payment" component={PaymentMethodScreen}></Route>
         <Route path="/" component={HomeScreen} exact></Route>
       </main>
       <footer className="row center">23조 All rights reserved</footer>

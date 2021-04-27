@@ -16,7 +16,10 @@ const initialState = {
       cartItems: localStorage.getItem('cartItems')
         ? JSON.parse(localStorage.getItem('cartItems'))
         : [],
-    },
+        // 뒤로가기 해서 배송지 화면으로 갔을 때 버퍼에 저장된 입력값 보여줌.
+        shippingAddress: localStorage.getItem('shippingAddress')? JSON.parse(localStorage.getItem('shippingAddress')): {},
+        paymentMethod: 'KakaoPay',
+      },
   };
 const reducer = combineReducers({
     productList: productsListReducer,

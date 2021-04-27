@@ -24,7 +24,7 @@ body{
       'main' 
       'footer';
   grid-template-columns: 1fr;         /* 템플릿의 행을 해당 비율로 표현, fr=비율을 뜻할 때 사용 */
-  grid-template-rows: 8rem 1fr 3rem;  /* 템플릿의 행을 표현 , 5rem + 나머지(1fr) + 5rem으로 구성됨 */
+  grid-template-rows: 8rem 1fr 5rem;  /* 템플릿의 행을 표현 , 5rem + 나머지(1fr) + 5rem으로 구성됨 */
   height: 100%;                       /* 높이 100%활용 */
 }
 header{
@@ -109,7 +109,20 @@ a.brand{                              /* brand라는 클래스 생성 */
   font-size: 1.4rem;
   margin-left: 0.2rem;
 }
-.row{                                 /* 행 설정 */
+.title{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.topmenu{
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  align-content: right;
+  margin-bottom: 20px;
+}
+.row{  
+  margin-top: 10px;                               /* 행 설정 */
   display: flex;                      /* 양쪽 폭 전부 사용 */
   flex-wrap: wrap;                    /* items를 여러 줄 묶음 */
   justify-content: space-between;     /* item은 items들 사이에만 여유 공간을 두고 배치 */
@@ -119,10 +132,12 @@ a.brand{                              /* brand라는 클래스 생성 */
   justify-content: center;            /* item을 중앙에 위치시킴 */
 }
 .row.top{
+  margin-top: 20px;
   align-items: flex-start;
 }
 .col-1{                               /* ProductScreen의 description */
   flex: 1 1 25rem;
+  margin-left: 20px;
 }
 .col-2{                               /* ProductScreen의 Add to Cart */
   flex: 2 1 50rem;
@@ -205,7 +220,6 @@ img.large {                           /* Product Screen에서의 image 설정 */
 }
 .form label {
   margin: 1rem 0;
-  display: block;
 }
 
 /* Dropdown , 페이지 헤더의 오른쪽 로그인칸 */
@@ -220,11 +234,26 @@ img.large {                           /* Product Screen에서의 image 설정 */
   min-width: 12rem;
   padding: 1rem;
   z-index: 1;
-  background-color: #203040;
+  background-color: #8ebceb;
   margin: 0;
   margin-top: 0.4rem;
   border-radius: 0.5rem;
 }
 .dropdown:hover .dropdown-content {
   display: block;
+}
+
+/* Checkout Steps */
+.checkout-steps
+{
+  border-top: 0.3rem #979090 solid;
+  color:#979090;
+  flex: 1;
+  padding: 1rem;
+  font-weight: bold;
+}
+
+.checkout-steps > div.active {
+  border-top-color: #f89c45 ;
+  color: #f89c45;
 }

@@ -52,9 +52,9 @@ export default function ProductScreen(props) {
                     numReviews={product.numReviews}
                   ></Rating>
                 </li>
-                <li>Pirce : ${product.price}</li>
+                <li>가격 : ${product.price}</li>
                 <li>
-                  Description:
+                  상품설명:
                   <p>{product.description}</p>
                 </li>
               </ul>
@@ -64,18 +64,18 @@ export default function ProductScreen(props) {
                 <ul>
                   <li>
                     <div className="row">
-                      <div>Price</div>
+                      <div>가격</div>
                       <div className="price">${product.price}</div>
                     </div>
                   </li>
                   <li>
                     <div className="row">
-                      <div>Status</div>
+                      <div>재고</div>
                       <div>
                         {product.countInStock > 0 ? (
-                          <span className="success">In Stock</span>
+                          <span className="success">구매가능</span>
                         ) : (
-                          <span className="danger">Unavailable</span>
+                          <span className="danger">매진</span>
                         )}
                       </div>
                     </div>
@@ -84,7 +84,7 @@ export default function ProductScreen(props) {
                      <>
                        <li>
                          <div className="row">
-                           <div>Qty</div>
+                           <div>구매수량</div>
                            <div>
                              <select
                                value={qty}
@@ -106,7 +106,7 @@ export default function ProductScreen(props) {
                            onClick={addToCartHandler} // 위에 addToCartHandler 함수 호출
                            className="primary block"
                          >
-                           Add to Cart
+                           장바구니에 담기
                          </button>
                        </li>
                      </>
