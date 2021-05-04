@@ -1,81 +1,65 @@
-
-
- // import { KakaoPayButton } from ' ';
-
- import React, { useEffect } from 'react';
+import React, { useEffect } from 'react';
  import { useDispatch, useSelector } from 'react-redux';
  import { Link } from 'react-router-dom';
- import { detailsOrder, payOrder } from '../actions/orderActions';
+ import { detailsOrder } from '../actions/orderActions';
  import LoadingBox from '../components/LoadingBox';
  import MessageBox from '../components/MessageBox';
- import { ORDER_PAY_RESET } from '../constants/orderConstants';
-
 
  export default function OrderScreen(props) {
    const orderId = props.match.params.id;
    const orderDetails = useSelector((state) => state.orderDetails);
    const { order, loading, error } = orderDetails;
-   
-   const orderPay = useSelector((state) => state.orderPay);
-   const {
-     loading: loadingPay,
-     error: errorPay,
-     success: successPay,
-   } = orderPay;
-   
    const dispatch = useDispatch();
    useEffect(() => {
-    dispatch(detailsOrder(orderId));
-}, [dispatch, orderId]);
-// 이 부분 paypal 사용 조작 코드 일단 건너뜀.(30,31강)
-
+     dispatch(detailsOrder(orderId));
+   }, [dispatch, orderId]);
    return loading ? (
      <LoadingBox></LoadingBox>
    ) : error ? (
      <MessageBox variant="danger">{error}</MessageBox>
    ) : (
      <div>
-       <h1>주문 {order._id}</h1>
+       <h1>Order {order._id}</h1>
        <div className="row top">
          <div className="col-2">
            <ul>
              <li>
                <div className="card card-body">
-                 <h2>배송</h2>
+                 <h2>Shipping</h2>
                  <p>
-                   <strong>이름:</strong> {order.shippingAddress.fullName} <br />
-                   <strong>주소: </strong> {order.shippingAddress.address},
+                   <strong>Name:</strong> {order.shippingAddress.fullName} <br />
+                   <strong>Address: </strong> {order.shippingAddress.address},
                    {order.shippingAddress.city},{' '}
                    {order.shippingAddress.postalCode},
                    {order.shippingAddress.country}
                  </p>
                  {order.isDelivered ? (
                    <MessageBox variant="success">
-                     {order.deliveredAt} 에 배송됨
+                     Delivered at {order.deliveredAt}
                    </MessageBox>
                  ) : (
-                   <MessageBox variant="danger">배송되지 않음</MessageBox>
+                   <MessageBox variant="danger">Not Delivered</MessageBox>
                  )}
                </div>
              </li>
              <li>
                <div className="card card-body">
-                 <h2>결제</h2>
+                 <h2>Payment</h2>
                  <p>
-                   <strong>방법:</strong> {order.paymentMethod}
+                   <strong>Method:</strong> {order.paymentMethod}
                  </p>
                  {order.isPaid ? (
                    <MessageBox variant="success">
                      Paid at {order.paidAt}
                    </MessageBox>
                  ) : (
-                   <MessageBox variant="danger">미결제</MessageBox>
+                   <MessageBox variant="danger">Not Paid</MessageBox>
                  )}
                </div>
              </li>
              <li>
                <div className="card card-body">
-                 <h2>주문 상품</h2>
+                 <h2>Order Items</h2>
                  <ul>
                    {order.orderItems.map((item) => (
                      <li key={item.product}>
@@ -108,32 +92,36 @@
            <div className="card card-body">
              <ul>
                <li>
-                 <h2>주문 요약</h2>
+                 <h2>Order Summary</h2>
                </li>
                <li>
                  <div className="row">
-                   <div>상품</div>
+                   <div>Items</div>
                    <div>${order.itemsPrice.toFixed(2)}</div>
                  </div>
                </li>
                <li>
                  <div className="row">
-                   <div>배송</div>
+                   <div>Shipping</div>
                    <div>${order.shippingPrice.toFixed(2)}</div>
                  </div>
                </li>
-              
+               <li>
+                 <div className="row">
+                   <div>Tax</div>
+                   <div>${order.taxPrice.toFixed(2)}</div>
+                 </div>
+               </li>
                <li>
                  <div className="row">
                    <div>
-                     <strong> 주문 합계</strong>
+                     <strong> Order Total</strong>
                    </div>
                    <div>
                      <strong>${order.totalPrice.toFixed(2)}</strong>
                    </div>
                  </div>
                </li>
-              
              </ul>
            </div>
          </div>

@@ -207,10 +207,7 @@ img.large {                           /* Product Screen에서의 image 설정 */
   color: #a02020;
   background-color: #ffe0e0e0;
 }
-.alert-success {
-  color: #20a020;
-  background-color: #eeffe0;
-}
+
 /* Form , SigninScreen의 디테일 설정 button 색상 =  Line88*/
 .form{
   max-width: 60rem;
