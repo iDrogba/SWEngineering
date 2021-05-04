@@ -6,6 +6,8 @@ import mongoose from 'mongoose';
 import productRouter from './routers/productRouter.js';
 import userRouter from './routers/userRouter.js';
 import dotenv from 'dotenv';
+import orderRouter from './routers/orderRouter.js';
+
 
 dotenv.config();
 
@@ -21,6 +23,8 @@ mongoose.connect(process.env.MONGODB_URL || 'mongodb://localhost/SWEngineering',
 
 app.use('/api/users', userRouter);
 app.use('/api/products', productRouter);
+app.use('/api/orders', orderRouter);
+
 app.get('/', (req, res) => {
   res.send('Server is ready');
 });
