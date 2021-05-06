@@ -33,9 +33,9 @@ export default function ProductListScreen(props) {
   return (
     <div>
       <div className="row">
-        <h1>Products</h1>
+        <h1>상품 목록</h1>
         <button type="button" className="primary" onClick={createHandler}>
-          Create Product
+          상품 추가하기
         </button>
       </div>
       {loadingCreate && <LoadingBox></LoadingBox>}
@@ -48,12 +48,12 @@ export default function ProductListScreen(props) {
         <table className="table">
           <thead>
             <tr>
-              <th>ID</th>
-              <th>NAME</th>
-              <th>PRICE</th>
-              <th>CATEGORY</th>
-              <th>BRAND</th>
-              <th>ACTIONS</th>
+              <th>상품 ID</th>
+              <th>이름</th>
+              <th>가격</th>
+              <th>분류</th>
+              <th>브랜드</th>
+              <th>수정하기</th>
             </tr>
           </thead>
           <tbody>
@@ -72,14 +72,14 @@ export default function ProductListScreen(props) {
                       props.history.push(`/product/${product._id}/edit`)
                     }
                   >
-                    Edit
+                    변경
                   </button>
                   <button
                     type="button"
                     className="small"
                     onClick={() => deleteHandler(product)}
                   >
-                    Delete
+                    삭제
                   </button>
                 </td>
               </tr>

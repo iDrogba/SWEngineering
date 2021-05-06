@@ -29,7 +29,7 @@ export default function ProductEditScreen(props) {
       setBrand(product.brand);
       setDescription(product.description);
     }
-  }, [product, dispatch, productId]);
+  }, [product, dispatch, productId]); // 이 각각의 변수에 변화가 있을 때 다시 업데이트됨.
   const submitHandler = (e) => {
     e.preventDefault();
     // TODO: dispatch update product
@@ -38,7 +38,8 @@ export default function ProductEditScreen(props) {
     <div>
       <form className="form" onSubmit={submitHandler}>
         <div>
-          <h1>Edit Product {productId}</h1>
+          <h1>상품 수정</h1>
+          <h2>제품 번호: {productId}</h2>
         </div>
         {loading ? (
           <LoadingBox></LoadingBox>
@@ -47,7 +48,7 @@ export default function ProductEditScreen(props) {
         ) : (
           <>
             <div>
-              <label htmlFor="name">Name</label>
+              <label htmlFor="name">이름</label>
               <input
                 id="name"
                 type="text"
@@ -57,7 +58,7 @@ export default function ProductEditScreen(props) {
               ></input>
             </div>
             <div>
-              <label htmlFor="price">Price</label>
+              <label htmlFor="price">가격</label>
               <input
                 id="price"
                 type="text"
@@ -67,7 +68,7 @@ export default function ProductEditScreen(props) {
               ></input>
             </div>
             <div>
-              <label htmlFor="image">Image</label>
+              <label htmlFor="image">이미지</label>
               <input
                 id="image"
                 type="text"
@@ -77,7 +78,7 @@ export default function ProductEditScreen(props) {
               ></input>
             </div>
             <div>
-              <label htmlFor="category">Category</label>
+              <label htmlFor="category">분류</label>
               <input
                 id="category"
                 type="text"
@@ -87,7 +88,7 @@ export default function ProductEditScreen(props) {
               ></input>
             </div>
             <div>
-              <label htmlFor="brand">Brand</label>
+              <label htmlFor="brand">브랜드</label>
               <input
                 id="brand"
                 type="text"
@@ -97,7 +98,7 @@ export default function ProductEditScreen(props) {
               ></input>
             </div>
             <div>
-              <label htmlFor="countInStock">Count In Stock</label>
+              <label htmlFor="countInStock">재고</label>
               <input
                 id="countInStock"
                 type="text"
@@ -107,7 +108,7 @@ export default function ProductEditScreen(props) {
               ></input>
             </div>
             <div>
-              <label htmlFor="description">Description</label>
+              <label htmlFor="description">상품설명</label>
               <textarea
                 id="description"
                 rows="3"
@@ -120,7 +121,7 @@ export default function ProductEditScreen(props) {
             <div>
               <label></label>
               <button className="primary" type="submit">
-                Update
+                변경하기
               </button>
             </div>
           </>
