@@ -91,6 +91,9 @@ button.primary{
 button.block{
   width: 100%;
 }
+button.small {
+  font-size: 1.2rem;
+}
 /* header */
 header a{                             /* a를 header에 적용 */
   color: #10033f;                   /* 글씨 색상 적용 */
@@ -207,10 +210,7 @@ img.large {                           /* Product Screen에서의 image 설정 */
   color: #a02020;
   background-color: #ffe0e0e0;
 }
-.alert-success {
-  color: #20a020;
-  background-color: #eeffe0;
-}
+
 /* Form , SigninScreen의 디테일 설정 button 색상 =  Line88*/
 .form{
   max-width: 60rem;
@@ -234,7 +234,7 @@ img.large {                           /* Product Screen에서의 image 설정 */
   position: absolute;
   display: none;
   right: 0;
-  min-width: 12rem;
+  min-width: 13rem;
   padding: 1rem;
   z-index: 1;
   background-color: #8ebceb;
@@ -259,4 +259,22 @@ img.large {                           /* Product Screen에서의 image 설정 */
 .checkout-steps > div.active {
   border-top-color: #f89c45 ;
   color: #f89c45;
+}
+
+/* Table */
+.table {
+  width: 100%;
+  border-collapse: collapse;
+}
+.table tbody tr:nth-of-type(odd) {
+  background-color: #f4f4f4;
+}
+.table td,
+.table th {
+  text-align: left;
+  border: 0.1rem solid #e4e4e4;
+  padding: 0.5rem;
+}
+.table button {
+  margin: 0 0.2rem;
 }
