@@ -4,7 +4,14 @@ import express from 'express';
  import { isAuth } from '../utils.js';
 
  const orderRouter = express.Router();
-
+ orderRouter.get(
+   '/mine', 
+   isAuth, 
+   expressAsyncHandler(async(req, res) => {
+    const orders = await Order.find({user: req.user._id});
+    res.send(orders);
+  })
+ );
  orderRouter.post(
    '/',
    isAuth,
@@ -41,6 +48,5 @@ import express from 'express';
       }
     })
   );
- 
  
  export default orderRouter;
