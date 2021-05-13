@@ -98,6 +98,23 @@ userRouter.get(
     res.send(users);
   })
 );
-
+userRouter.delete(
+  '/:id',
+  isAuth,
+  isAdmin,
+  expressAsyncHandler(async (req, res) => {
+    const user = await User.findById(req.params.id);
+    if (user) {
+      if (user.email === 'admin@gamil.com') {
+        res.status(400).send({ message: 'Admin User 삭제 불가' });
+        return;
+      }
+      const deleteUser = await user.remove();
+      res.send({ message: 'User 삭제됨', user: deleteUser });
+    } else {
+      res.status(404).send({ message: 'User 찾을 수 없음' });
+    }
+  })
+);
 
 export default userRouter;
