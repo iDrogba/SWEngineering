@@ -105,7 +105,7 @@ userRouter.delete(
   expressAsyncHandler(async (req, res) => {
     const user = await User.findById(req.params.id);
     if (user) {
-      if (user.email === 'admin@gamil.com') {
+      if (user.email === 'admin@gmail.com') {
         res.status(400).send({ message: 'Admin User 삭제 불가' });
         return;
       }
