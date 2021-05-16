@@ -7,6 +7,15 @@ import { generateToken, isAdmin , isAuth } from '../utils.js';
 
 const userRouter = express.Router();
 
+/* Top Seller */
+userRouter.get('/top-sellers', expressAsyncHandler(async (req, res)=> {
+  const topSellers = await Product.find({})
+    .sort({'numReviews':-1})
+    .limit(3);
+    res.send(topSellers);
+  })
+);
+
 userRouter.get(
     '/seed', 
     expressAsyncHandler(async (req,res) => {
