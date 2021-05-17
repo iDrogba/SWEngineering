@@ -45,13 +45,14 @@ function App() {
          🛒23조_Shop
           </Link>
         </div>
-        <div>
+        <div className="search_box">
           <Route 
             render={({ history }) => (
             <SearchBox history={history}></SearchBox>
             )}
           ></Route>
         </div>
+        
         <div className="topmenu">
         <Link to="/cart">
                장바구니

@@ -122,7 +122,7 @@ a.brand{                              /* brand라는 클래스 생성 */
   justify-content: flex-end;
   align-items: center;
   align-content: right;
-  margin-bottom: 20px;
+  margin-bottom: 50px;
 }
 .row{  
   margin-top: 10px;                               /* 행 설정 */
@@ -285,6 +285,12 @@ img.large {                           /* Product Screen에서의 image 설정 */
   max-width: 30rem;
 }
 
+.search_box{
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  align-content: right;
+}
 /* Search 검색 */
 .search button {
   border-radius: 0 0.5rem 0.5rem 0;

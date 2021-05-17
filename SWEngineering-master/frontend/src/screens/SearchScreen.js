@@ -39,7 +39,7 @@ export default function SearchScreen(props) {
                 <MessageBox variant="danger">{error}</MessageBox>
             ) : (
                 <>
-              {products.length ===0 && <MessageBox>No Product Found</MessageBox>}
+              {products.length ===0 && <MessageBox>검색된 제품이 없습니다.</MessageBox>}
           <div className="row center">
             {products.map((product) => (
               <Product key={product._id} product={product} ></Product>
