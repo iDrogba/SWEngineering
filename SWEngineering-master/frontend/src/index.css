@@ -122,10 +122,16 @@ a.brand{                              /* brand라는 클래스 생성 */
   justify-content: flex-end;
   align-items: center;
   align-content: right;
-  margin-bottom: 50px;
+}
+.productlist_row{
+  margin-top: 40px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  align-content: right;
 }
 .row{  
-  margin-top: 10px;                               /* 행 설정 */
+  margin-top: 0px;                               /* 행 설정 */
   display: flex;                      /* 양쪽 폭 전부 사용 */
   flex-wrap: wrap;                    /* items를 여러 줄 묶음 */
   justify-content: space-between;     /* item은 items들 사이에만 여유 공간을 두고 배치 */
@@ -141,6 +147,7 @@ a.brand{                              /* brand라는 클래스 생성 */
 .col-1{                               /* ProductScreen의 description */
   flex: 1 1 25rem;
   margin-left: 20px;
+  margin-top: 30px;
 }
 .col-2{                               /* ProductScreen의 Add to Cart */
   flex: 2 1 50rem;

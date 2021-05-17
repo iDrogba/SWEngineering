@@ -30,7 +30,7 @@ export default function HomeScreen() {
     return(
         /* Top Seller */
         <div>
-          <h2>Top Sellers</h2>
+          <h2>인기 상품</h2>
           {loadingSellers? (<LoadingBox></LoadingBox>) 
           : errorSellers ? (<MessageBox variant="danger">{error}</MessageBox>)
           : (
@@ -56,7 +56,7 @@ export default function HomeScreen() {
 
             */
           )}
-          <h2> Featured Products</h2>
+          <h2> 전체 상품 목록 </h2>
           {loading? (
           <LoadingBox></LoadingBox>
           ) : error ? (

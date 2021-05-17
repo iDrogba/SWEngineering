@@ -50,7 +50,7 @@ export default function ProductListScreen(props) {
   };
   return (
     <div>
-      <div className="row">
+      <div className="productlist_row">
         <h1>상품 목록</h1>
         <button type="button" className="primary" onClick={createHandler}>
           상품 추가하기
