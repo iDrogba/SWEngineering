@@ -3,9 +3,18 @@ import User from '../models/userModel.js';
 import data from '../data.js'
 import expressAsyncHandler from 'express-async-handler';
 import bcrypt from 'bcryptjs'
-import { generateToken, isAuth } from '../utils.js';
+import { generateToken, isAdmin , isAuth } from '../utils.js';
 
 const userRouter = express.Router();
+
+/* Top Seller */
+userRouter.get('/top-sellers', expressAsyncHandler(async (req, res)=> {
+  const topSellers = await Product.find({})
+    .sort({'numReviews':-1})
+    .limit(3);
+    res.send(topSellers);
+  })
+);
 
 userRouter.get(
     '/seed', 
@@ -88,6 +97,54 @@ userRouter.get(
       });
     }
   })
+);
+userRouter.get(
+  '/',
+  isAuth,
+  isAdmin,
+  expressAsyncHandler(async (req, res) => {
+    const users = await User.find({});
+    res.send(users);
+  })
+);
+userRouter.delete(
+  '/:id',
+  isAuth,
+  isAdmin,
+  expressAsyncHandler(async (req, res) => {
+    const user = await User.findById(req.params.id);
+    if (user) {
+      if (user.email === 'admin@gmail.com') {
+        res.status(400).send({ message: 'Admin User 삭제 불가' });
+        return;
+      }
+      const deleteUser = await user.remove();
+      res.send({ message: 'User 삭제됨', user: deleteUser });
+    } else {
+      res.status(404).send({ message: 'User 찾을 수 없음' });
+    }
+  })
+);
+
+userRouter.put(
+  '/:id',
+  isAuth,
+  isAdmin,
+  expressAsyncHandler(async (req, res) => {
+    const user = await User.findById(req.params.id);
+    if (user) {
+      user.name = req.body.name || user.name;
+      user.email = req.body.email || user.email;
+      user.isSeller =
+req.body.isSeller === user.isSeller ? user.isSeller : req.body.isSeller;
+user.isAdmin =
+    req.body.isAdmin === user.isAdmin ? user.isAdmin : req.body.isAdmin;
+    const updatedUser = await user.save();
+    res.send({ message: 'User Updated', user: updatedUser });
+  } else {
+    res.status(404).send({ message: 'User Not Found' });
+  }
+})
 );
 
 export default userRouter;
