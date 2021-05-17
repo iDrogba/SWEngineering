@@ -22,7 +22,7 @@ export default function OrderListScreen(props) {
   }, [dispatch, successDelete]);
   const deleteHandler = (order) => {
     // delete handler
-    if (window.confirm('Are you sure to delete?')) {
+    if (window.confirm('정말 삭제하시겠습니까?')) {
       dispatch(deleteOrder(order._id));
     }
   };

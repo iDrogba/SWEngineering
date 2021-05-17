@@ -37,11 +37,11 @@ export default function ProductListScreen(props) {
     if (successDelete) {
       dispatch({ type: PRODUCT_DELETE_RESET });
     }
-    dispatch(listProducts());
+    dispatch(listProducts({}));
   }, [createdProduct, dispatch, props.history, successCreate, successDelete]);
 
   const deleteHandler = (product) => {
-    if (window.confirm('Are you sure to delete?')) {
+    if (window.confirm('정말 삭제하시겠습니까?')) {
       dispatch(deleteProduct(product._id));
     }
   };
