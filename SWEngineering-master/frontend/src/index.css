@@ -122,10 +122,16 @@ a.brand{                              /* brand라는 클래스 생성 */
   justify-content: flex-end;
   align-items: center;
   align-content: right;
-  margin-bottom: 20px;
+}
+.productlist_row{
+  margin-top: 60px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  align-content: right;
 }
 .row{  
-  margin-top: 10px;                               /* 행 설정 */
+  margin-top: 20px;                               /* 행 설정 */
   display: flex;                      /* 양쪽 폭 전부 사용 */
   flex-wrap: wrap;                    /* items를 여러 줄 묶음 */
   justify-content: space-between;     /* item은 items들 사이에만 여유 공간을 두고 배치 */
@@ -141,9 +147,13 @@ a.brand{                              /* brand라는 클래스 생성 */
 .col-1{                               /* ProductScreen의 description */
   flex: 1 1 25rem;
   margin-left: 20px;
+  margin-top: 0px;
 }
 .col-2{                               /* ProductScreen의 Add to Cart */
   flex: 2 1 50rem;
+}
+.col-3{
+  justify-content: center;
 }
 .min-30{
   min-width: 30rem;
@@ -157,7 +167,7 @@ img.small{
   width: 100%;
 }
 img.medium {
-  max-width: 29rem;                   /* 최대 폭 */
+  max-width: 25rem;                   /* 최대 폭 */
   width: 100%;                        /* 폭 활용도 */
 }
 img.large {                           /* Product Screen에서의 image 설정 */
@@ -254,6 +264,7 @@ img.large {                           /* Product Screen에서의 image 설정 */
   flex: 1;
   padding: 1rem;
   font-weight: bold;
+  margin-top: 90px;
 }
 
 .checkout-steps > div.active {
@@ -277,4 +288,99 @@ img.large {                           /* Product Screen에서의 image 설정 */
 }
 .table button {
   margin: 0 0.2rem;
+}
+
+/* Carousel
+  Top Seller */
+.carousel .slide img {
+  max-width: 30rem;
+}
+
+.search_box{
+  display: flex;
+  justify-content:space-between;
+  align-items: center;
+  align-content:space-between;
+}
+/* Search 검색 */
+.search button {
+  border-radius: 0 0.5rem 0.5rem 0;
+  border-right: none;
+  margin-right: 0.5rem;
+}
+.search input {
+  border-radius: 0.5rem 0 0 0.5rem;
+  border-right: none;
+  margin-left: 0.5rem;
+}
+
+/* 사이드바 */
+aside {
+  position: fixed;
+  width: 30rem;
+  height: 100%;
+  background-color: hsl(122, 65%, 92%);
+  z-index: 1000;
+  transform: translateX(-30rem);
+  transition: all 0.5s;
+}
+aside.open {
+  transform: translateX(0);
+}
+button.open-sidebar {
+  font-size: 3rem;
+  padding: 0.2rem 0.5rem;
+  margin: 0 0.5rem;
+  background: none;
+  color: #1a2c66;
+  cursor: pointer;
+  background-color: gold;
+  margin-top: 21px;
+
+}
+button.open-sidebar:hover {
+  border-color: #ffffff;
+}
+aside ul {
+  padding: 0;
+  list-style: none;
+}
+aside li {
+  display: flex;
+  justify-content: space-between;
+  padding: 1rem;
+}
+button.close-sidebar {
+  padding: 0.3rem 0.8rem;
+}
+
+.product_page
+{
+  margin-top: 50px;
+}
+
+.results{
+  margin-top: 30px;
+}
+
+.topseller_main{
+  margin-top: 40px;
+}
+
+.userlist{
+  margin-top: 40px;
+
+}
+
+.orderlist{
+  margin-top: 40px;
+
+}
+
+.active {
+  font-weight: bold;
+}
+.sortby{
+
+  margin-top: 60px;
 }
