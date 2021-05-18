@@ -147,10 +147,13 @@ a.brand{                              /* brand라는 클래스 생성 */
 .col-1{                               /* ProductScreen의 description */
   flex: 1 1 25rem;
   margin-left: 20px;
-  margin-top: 30px;
+  margin-top: 0px;
 }
 .col-2{                               /* ProductScreen의 Add to Cart */
   flex: 2 1 50rem;
+}
+.col-3{
+  justify-content: center;
 }
 .min-30{
   min-width: 30rem;
@@ -164,7 +167,7 @@ img.small{
   width: 100%;
 }
 img.medium {
-  max-width: 29rem;                   /* 최대 폭 */
+  max-width: 25rem;                   /* 최대 폭 */
   width: 100%;                        /* 폭 활용도 */
 }
 img.large {                           /* Product Screen에서의 image 설정 */
@@ -261,6 +264,7 @@ img.large {                           /* Product Screen에서의 image 설정 */
   flex: 1;
   padding: 1rem;
   font-weight: bold;
+  margin-top: 90px;
 }
 
 .checkout-steps > div.active {
@@ -352,7 +356,7 @@ button.close-sidebar {
 
 .product_page
 {
-  margin-top: 30px;
+  margin-top: 50px;
 }
 
 .results{
@@ -371,4 +375,12 @@ button.close-sidebar {
 .orderlist{
   margin-top: 40px;
 
+}
+
+.active {
+  font-weight: bold;
+}
+.sortby{
+
+  margin-top: 60px;
 }
