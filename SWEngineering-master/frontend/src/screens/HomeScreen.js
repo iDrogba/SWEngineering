@@ -29,7 +29,7 @@ export default function HomeScreen() {
   }, [dispatch])
     return(
         /* Top Seller */
-        <div>
+        <div className="topseller_main">
           <h2>인기 상품</h2>
           {loadingSellers? (<LoadingBox></LoadingBox>) 
           : errorSellers ? (<MessageBox variant="danger">{error}</MessageBox>)

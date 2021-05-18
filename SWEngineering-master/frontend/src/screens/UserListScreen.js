@@ -29,12 +29,12 @@ import React, { useEffect } from 'react';
       }
     };
    return (
-     <div>
-       <h1>Users</h1>
+     <div className="userlist">
+       <h1>회원 목록</h1>
        {loadingDelete && <LoadingBox></LoadingBox>}
        {errorDelete && <MessageBox variant="danger">{errorDelete}</MessageBox>}
        {successDelete && (
-         <MessageBox variant="success">User가 성공적으로 삭제되었습니다.</MessageBox>
+         <MessageBox variant="success">회원이 성공적으로 삭제되었습니다.</MessageBox>
        )}
        {loading ? (
          <LoadingBox></LoadingBox>
@@ -44,12 +44,12 @@ import React, { useEffect } from 'react';
          <table className="table">
            <thead>
              <tr>
-               <th>ID</th>
+               <th>회원번호</th>
                <th>이름</th>
-               <th>EMAIL</th>
+               <th>이메일</th>
                <th>IS SELLER</th>
-               <th>IS ADMIN</th>
-               <th>ACTIONS</th>
+               <th>관리자 여부</th>
+               <th>기타</th>
              </tr>
            </thead>
            <tbody>

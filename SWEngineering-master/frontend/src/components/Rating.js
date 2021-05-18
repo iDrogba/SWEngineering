@@ -46,7 +46,7 @@ export default function Rating(props) {
                     : "fa fa-star-o"}>
                 </i>
             </span>
-            <span>{numReviews + ' reviews'}</span>
+            <span>{numReviews + ' 개의 리뷰'}</span>
         </div>
     )
 }

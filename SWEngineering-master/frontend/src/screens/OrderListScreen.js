@@ -27,7 +27,7 @@ export default function OrderListScreen(props) {
     }
   };
   return (
-    <div>
+    <div className="orderlist">
       <h1>주문현황</h1>
       {loadingDelete && <LoadingBox></LoadingBox>}
       {errorDelete && <MessageBox variant="danger">{errorDelete}</MessageBox>}
@@ -42,10 +42,10 @@ export default function OrderListScreen(props) {
               <th>ID</th>
               <th>회원이름</th>
               <th>날짜</th>
-              <th>TOTAL</th>
-              <th>PAID</th>
-              <th>DELIVERED</th>
-              <th>ACTIONS</th>
+              <th>총 합</th>
+              <th>결제</th>
+              <th>배송</th>
+              <th>기타</th>
             </tr>
           </thead>
           <tbody>
