@@ -147,7 +147,7 @@ a.brand{                              /* brand라는 클래스 생성 */
 .col-1{                               /* ProductScreen의 description */
   flex: 1 1 25rem;
   margin-left: 20px;
-  margin-top: 0px;
+  margin-top: 56px;
 }
 .col-2{                               /* ProductScreen의 Add to Cart */
   flex: 2 1 50rem;
