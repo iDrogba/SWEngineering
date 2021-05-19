@@ -56,7 +56,7 @@ function App() {
       <header >
         <div className="title">
         <Link className="brand" to="/">
-         🛒23조_Shop
+        SEOULTECH & LIVING
           </Link>
         </div>
         <div className="search_box">
