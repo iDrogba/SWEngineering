@@ -30,7 +30,7 @@ export default function HomeScreen() {
     return(
         /* Top Seller */
         <div className="topseller_main">
-          <h2>리뷰 많은 순</h2>
+          <h2>이벤트 및 공지</h2>
           {loadingSellers? (<LoadingBox></LoadingBox>) 
           : errorSellers ? (<MessageBox variant="danger">{error}</MessageBox>)
           : (
@@ -48,6 +48,9 @@ export default function HomeScreen() {
             </Carousel>
             </>
           )}
+
+
+
           <h2> 전체 상품 목록 </h2>
           {loading? (
           <LoadingBox></LoadingBox>
@@ -55,7 +58,7 @@ export default function HomeScreen() {
             <MessageBox variant="danger">{error}</MessageBox>
             ) : (
               <>
-              {products.length ===0 && <MessageBox>No Product Found</MessageBox>}
+              {products.length ===0 && <MessageBox>찾으시는 상품이 없습니다.</MessageBox>}
           <div className="row center">
             {products.map((product) => (
               <Product key={product._id} product={product} ></Product>
