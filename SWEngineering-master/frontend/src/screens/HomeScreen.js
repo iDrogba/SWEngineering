@@ -8,7 +8,7 @@ import LoadingBox from '../components/LoadingBox';
 import MessageBox from '../components/MessageBox';
 import { useDispatch, useSelector} from 'react-redux';
 import { listProducts } from '../actions/productActions';
-import { listTopSellers } from '../actions/userActions';
+import { listTopSellers } from '../actions/productActions';
 import { Link } from 'react-router-dom';
 
 export default function HomeScreen() {
@@ -16,12 +16,12 @@ export default function HomeScreen() {
   const productList = useSelector(state => state.productList);
   const { loading, error , products} = productList;
 
-  const userTopSellersList = useSelector((state) => state.userTopSellersList);
+  const productTopSellersList = useSelector((state) => state.productTopSellersList);
   const { 
     loading: loadingSellers, 
     error: errorSellers, 
     products: sellers,
-  } = userTopSellersList;
+  } = productTopSellersList;
 
   useEffect(() => {
     dispatch(listProducts({}));
@@ -30,16 +30,16 @@ export default function HomeScreen() {
     return(
         /* Top Seller */
         <div className="topseller_main">
-          <h2>인기 상품</h2>
+          <h2>리뷰 많은 순</h2>
           {loadingSellers? (<LoadingBox></LoadingBox>) 
           : errorSellers ? (<MessageBox variant="danger">{error}</MessageBox>)
           : (
             <>
-            {products.length ===0 && <MessageBox>No Seller Found</MessageBox>}
+            {sellers.length === 0 && <MessageBox>No Seller Found</MessageBox>}
             <Carousel showArrows autoPlay showThumbs={false}>
               {sellers.map((seller) => (
                 <div key={seller._id}>
-                  <Link to={`${seller._id}`}>
+                  <Link to={`/product/${seller._id}`}>
                     <img src={seller.image} alt={seller.name}/>
                     <p className="legend">{seller.name}</p>
                   </Link>
@@ -47,14 +47,6 @@ export default function HomeScreen() {
               ))}
             </Carousel>
             </>
-            /*
-          <div className="row center">
-            {products.map((product) => (
-              <Product key={product._id} product={product} ></Product>
-            ))}
-          </div>
-
-            */
           )}
           <h2> 전체 상품 목록 </h2>
           {loading? (

@@ -17,6 +17,9 @@ import { PRODUCT_DETAILS_FAIL,
          PRODUCT_CATEGORY_LIST_SUCCESS,
          PRODUCT_CATEGORY_LIST_REQUEST,
          PRODUCT_CATEGORY_LIST_FAIL,
+         PRODUCT_TOPSELLERS_LIST_REQUEST,
+         PRODUCT_TOPSELLERS_LIST_SUCCESS,
+         PRODUCT_TOPSELLERS_LIST_FAIL,
         } from "../constants/productConstants"
 
 
@@ -130,3 +133,16 @@ export const detailsProduct = (productId) => async (dispatch) => {
       dispatch({ type: PRODUCT_DELETE_FAIL, payload: message });
     }
   };
+
+  export const listTopSellers = () => async (dispatch) => {
+    dispatch({
+        type: PRODUCT_TOPSELLERS_LIST_REQUEST
+    });
+    try {
+        const { data } = await Axios.get(
+          '/api/products/top-sellers');
+        dispatch({type: PRODUCT_TOPSELLERS_LIST_SUCCESS , payload : data});
+    } catch (error) {
+        dispatch({type: PRODUCT_TOPSELLERS_LIST_FAIL, payload: error.message});
+    }
+}

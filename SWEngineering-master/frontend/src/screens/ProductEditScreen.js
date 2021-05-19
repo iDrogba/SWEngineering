@@ -90,7 +90,7 @@ export default function ProductEditScreen(props) {
     <div>
       <form className="form" onSubmit={submitHandler}>
         <div>
-          <h1>상품 수정</h1>
+          <h1>상품 생성 및 변경</h1>
           <h2>제품 번호: {productId}</h2>
         </div>
         {loadingUpdate && <LoadingBox></LoadingBox>}
@@ -188,7 +188,7 @@ export default function ProductEditScreen(props) {
             <div>
               <label></label>
               <button className="primary" type="submit">
-                변경하기
+                완료
               </button>
             </div>
           </>

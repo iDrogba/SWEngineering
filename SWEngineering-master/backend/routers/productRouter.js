@@ -46,6 +46,16 @@ productRouter.get(
 );
 
 productRouter.get(
+  '/top-sellers', 
+  expressAsyncHandler(async (req, res)=> {
+    const topSellers = await Product.find({})
+      .sort({'numReviews':-1})
+      .limit(3);
+    res.send(topSellers);
+  })
+);
+
+productRouter.get(
   '/categories',
   expressAsyncHandler(async (req, res) => {
     const categories = await Product.find().distinct('category');
