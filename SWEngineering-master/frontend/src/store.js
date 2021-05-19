@@ -1,10 +1,25 @@
 import { applyMiddleware, combineReducers, compose, createStore } from 'redux';
 import thunk from 'redux-thunk';
 import { cartReducer } from './reducers/cartReducers';
-import { orderCreateReducer, orderDetailsReducer, orderMineListReducer, } from './reducers/orderReducers';
-import {productCreateReducer, productDetailsReducer} from './reducers/productReducers';
-import { productsListReducer } from './reducers/productReducers';
-import { userDetailsReducer, userRegisterReducer, userSigninReducer, userUpdateProfileReducer } from './reducers/userReducers';
+import { 
+  orderCreateReducer, 
+  orderDeleteReducer,
+  orderDeliverReducer,
+  orderDetailsReducer, 
+  orderListReducer,
+  orderMineListReducer, } from './reducers/orderReducers';
+import {
+  productCategoryListReducer,
+  productCreateReducer, 
+  productDeleteReducer,
+  productDetailsReducer,
+  productsListReducer, 
+  productUpdateReducer,
+} from './reducers/productReducers';
+import {   userDeleteReducer,
+  userDetailsReducer,  userListReducer,
+  userRegisterReducer, userSigninReducer, userTopSellerListReducer, userUpdateProfileReducer,  userUpdateReducer,
+} from './reducers/userReducers';
 
 
 const initialState = {
@@ -33,7 +48,18 @@ const reducer = combineReducers({
     orderMineList: orderMineListReducer,
     userDetails: userDetailsReducer,
     userUpdateProfile: userUpdateProfileReducer,
+    userUpdate: userUpdateReducer,
     productCreate: productCreateReducer,
+    productUpdate: productUpdateReducer,
+    productDelete: productDeleteReducer,
+    orderList: orderListReducer,
+    orderDelete: orderDeleteReducer,
+    orderDeliver: orderDeliverReducer,
+    userList: userListReducer,
+    userDelete: userDeleteReducer,
+    /* Top Seller */
+    userTopSellersList: userTopSellerListReducer,
+    productCategoryList: productCategoryListReducer,
 });
 
 const composeEnhancer = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;

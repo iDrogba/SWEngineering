@@ -5,21 +5,41 @@
  import React, { useEffect } from 'react';
  import { useDispatch, useSelector } from 'react-redux';
  import { Link } from 'react-router-dom';
- import { detailsOrder } from '../actions/orderActions';
+ import { deliverOrder, detailsOrder } from '../actions/orderActions';
  import LoadingBox from '../components/LoadingBox';
  import MessageBox from '../components/MessageBox';
-
+ import {
+  ORDER_DELIVER_RESET,
+  ORDER_PAY_RESET,
+} from '../constants/orderConstants';
 
  export default function OrderScreen(props) {
    const orderId = props.match.params.id;
    const orderDetails = useSelector((state) => state.orderDetails);
    const { order, loading, error } = orderDetails;
-   
+   const userSignin = useSelector((state) => state.userSignin);
+   const { userInfo } = userSignin;
+
+
    const dispatch = useDispatch();
    useEffect(() => {
     dispatch(detailsOrder(orderId));
 }, [dispatch, orderId]);
 // 이 부분 paypal 사용 조작 코드 일단 건너뜀.(30,31강)
+
+
+dispatch({ type: ORDER_DELIVER_RESET });
+
+const orderDeliver = useSelector((state) => state.orderDeliver);
+  const {
+    loading: loadingDeliver,
+    error: errorDeliver,
+    success: successDeliver,
+  } = orderDeliver;
+
+  const deliverHandler = () => {
+    dispatch(deliverOrder(order._id));
+  };
 
    return loading ? (
      <LoadingBox></LoadingBox>
@@ -125,7 +145,22 @@
                    </div>
                  </div>
                </li>
-              
+               {userInfo.isAdmin && //order.isPaid && 
+               !order.isDelivered && (
+                <li>
+                  {loadingDeliver && <LoadingBox></LoadingBox>}
+                  {errorDeliver && (
+                    <MessageBox variant="danger">{errorDeliver}</MessageBox>
+                  )}
+                  <button
+                    type="button"
+                    className="primary block"
+                    onClick={deliverHandler}
+                  >
+                    배송중으로 변환
+                  </button>
+                </li>
+              )}
              </ul>
            </div>
          </div>
