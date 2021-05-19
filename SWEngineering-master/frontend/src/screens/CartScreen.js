@@ -27,10 +27,10 @@ export default function CartScreen(props) {
   return (
     <div className="row top">
       <div className="col-2">
-        <h1>Shopping Cart</h1>
+        <h1>장바구니</h1>
         {cartItems.length === 0?
         <MessageBox>
-          Cart is empty. <Link to="/">Go Shopping</Link>
+          장바구니가 비었습니다. <Link to="/">쇼핑하러 가기</Link>
         </MessageBox>
         :
         (
@@ -66,10 +66,10 @@ export default function CartScreen(props) {
                               )}
                      </select>
                     </div>
-                    <div>${item.price}</div>
+                    <div>{item.price}원</div>
                     <div>
                       <button type="button" onClick={() => removeFromCartHandler(item.product)}>
-                        Delete
+                        삭제하기
                       </button>
                     </div>
                   </div>
@@ -85,7 +85,7 @@ export default function CartScreen(props) {
           <ul>
             <li>
               <h2>
-                Subtotal ({cartItems.reduce((a,c) => a + c.qty, 0)} items): ${cartItems.reduce((a,c) => a + c.price * c.qty, 0)}
+                총 ({cartItems.reduce((a,c) => a + c.qty, 0)}개): {cartItems.reduce((a,c) => a + c.price * c.qty, 0)}원
               </h2>
             </li>
             <li>

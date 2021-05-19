@@ -1,6 +1,6 @@
 /* data.js에서 data를 참고해 product의 세부 정보를 표현 */
 
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import {useDispatch, useSelector} from 'react-redux'
 import {BrowserRouter, Link, Route } from 'react-router-dom';
 import { signout } from './actions/userActions';
@@ -18,9 +18,20 @@ import ProfileScreen from './screens/ProfileScreen';
 import RegisterScreen from './screens/RegisterScreen';
 import ShippingAddressScreen from './screens/ShippingAddressScreen';
 import SigninScreen from './screens/SigninScreen';
+import ProductEditScreen from './screens/ProductEditScreen'
+import OrderListScreen from './screens/OrderListScreen';
+import UserListScreen from './screens/UserListScreen';
+import UserEditScreen from './screens/UserEditScreen';
+import SearchBox from './components/SearchBox';
+import SearchScreen from './screens/SearchScreen';
+import { listProductCategories } from './actions/productActions';
+import LoadingBox from './components/LoadingBox';
+import MessageBox from './components/MessageBox';
+
 
 function App() {
   const cart = useSelector((state) => state.cart);
+  const [sidebarIsOpen, setSidebarIsOpen] = useState(false);
   const { cartItems } = cart;
   const userSignin = useSelector((state) => state.userSignin);
   const { userInfo } = userSignin;
@@ -28,6 +39,16 @@ function App() {
   const signoutHandler =() => {
     dispatch(signout());
   }
+
+  const productCategoryList = useSelector((state) => state.productCategoryList);
+  const {
+    loading: loadingCategories,
+    error: errorCategories,
+    categories,
+  } = productCategoryList;
+  useEffect(() => {
+    dispatch(listProductCategories());
+  }, [dispatch]);
 
   return (
     <BrowserRouter>
@@ -38,6 +59,22 @@ function App() {
          🛒23조_Shop
           </Link>
         </div>
+        <div className="search_box">
+        <button
+              type="button"
+              className="open-sidebar"
+              onClick={() => setSidebarIsOpen(true)}
+            >
+              <i className="fa fa-bars" aria-hidden="true"></i>
+            </button>
+            
+          <Route 
+            render={({ history }) => (
+            <SearchBox history={history}></SearchBox>
+            )}
+          ></Route>
+        </div>
+        
         <div className="topmenu">
         <Link to="/cart">
                장바구니
@@ -90,9 +127,40 @@ function App() {
             )}
           </div>
       </header>
+      <aside className={sidebarIsOpen ? 'open' : ''}>
+          <ul className="categories">
+            <li>
+              <strong>카테고리</strong>
+              <button
+                onClick={() => setSidebarIsOpen(false)}
+                className="close-sidebar"
+                type="button"
+              >
+                <i className="fa fa-close"></i>
+              </button>
+            </li>
+            {loadingCategories ? (
+              <LoadingBox></LoadingBox>
+            ) : errorCategories ? (
+              <MessageBox variant="danger">{errorCategories}</MessageBox>
+            ) : (
+              categories.map((c) => (
+                <li key={c}>
+                  <Link
+                    to={`/search/category/${c}`}
+                    onClick={() => setSidebarIsOpen(false)}
+                  >
+                    {c}
+                  </Link>
+                </li>
+              ))
+            )}
+          </ul>
+        </aside>
       <main>
         <Route path="/cart/:id?" component={CartScreen}></Route>
         <Route path="/product/:id" component={ProductScreen} exact></Route>
+        <Route path="/product/:id/edit" component={ProductEditScreen} exact></Route>
         <Route path="/signin" component={SigninScreen}></Route>
         <Route path="/register" component={RegisterScreen}></Route>
         <Route path="/shipping" component={ShippingAddressScreen}></Route>
@@ -100,6 +168,26 @@ function App() {
         <Route path="/placeorder" component={PlaceOrderScreen}></Route>
         <Route path="/order/:id" component={OrderScreen}></Route>
         <Route path="/orderhistory" component={OrderHistoryScreen}></Route>
+        <Route 
+          path="/search/name/:name?" 
+          component={SearchScreen} 
+          exact
+        ></Route>
+        <Route
+            path="/search/category/:category"
+            component={SearchScreen}
+            exact
+          ></Route>
+          <Route
+            path="/search/category/:category/name/:name"
+            component={SearchScreen}
+            exact
+          ></Route>
+          <Route
+            path="/search/category/:category/name/:name/min/:min/max/:max/rating/:rating/order/:order"
+            component={SearchScreen}
+            exact
+          ></Route>
         <PrivateRoute
             path="/profile"
             component={ProfileScreen}
@@ -108,6 +196,15 @@ function App() {
             path="/productlist"
             component={ProductListScreen}
         ></AdminRoute>
+         <AdminRoute
+            path="/orderlist"
+            component={OrderListScreen}
+          ></AdminRoute>
+           <AdminRoute path="/userlist" component={UserListScreen}></AdminRoute>
+           <AdminRoute
+             path="/user/:id/edit"
+             component={UserEditScreen}
+           ></AdminRoute>
         <Route path="/" component={HomeScreen} exact></Route>
 
       </main>
