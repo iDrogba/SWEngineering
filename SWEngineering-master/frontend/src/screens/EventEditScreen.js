@@ -28,7 +28,7 @@ export default function EventEditScreen(props) {
   const dispatch = useDispatch();
   useEffect(() => {
     if (successUpdate) {
-      props.history.push('/eventlist');
+      props.history.push('/event');
     }
     if (!event || event._id !== eventId || successUpdate) {
       dispatch({ type: EVENT_UPDATE_RESET });
@@ -91,7 +91,7 @@ export default function EventEditScreen(props) {
       <form className="form" onSubmit={submitHandler}>
         <div>
           <h1>이벤트 생성 및 변경</h1>
-          <h2>제품 번호: {eventId}</h2>
+          <h2>글 번호: {eventId}</h2>
         </div>
         {loadingUpdate && <LoadingBox></LoadingBox>}
         {errorUpdate && <MessageBox variant="danger">{errorUpdate}</MessageBox>}
@@ -102,7 +102,7 @@ export default function EventEditScreen(props) {
         ) : (
           <>
             <div>
-              <label htmlFor="name">이름</label>
+              <label htmlFor="name">제목</label>
               <input
                 id="name"
                 type="text"
@@ -112,7 +112,7 @@ export default function EventEditScreen(props) {
               ></input>
             </div>
             <div>
-              <label htmlFor="price">가격</label>
+              <label htmlFor="price">날짜</label>
               <input
                 id="price"
                 type="text"
@@ -175,7 +175,7 @@ export default function EventEditScreen(props) {
               ></input>
             </div>
             <div>
-              <label htmlFor="description">상품설명</label>
+              <label htmlFor="description">상세 설명</label>
               <textarea
                 id="description"
                 rows="3"

@@ -146,7 +146,7 @@ eventRouter.post(
     isAuth,
     expressAsyncHandler(async (req, res) => {
       const eventId = req.params.id;
-      const event = await Event.findById(productId);
+      const event = await Event.findById(eventId);
       if (event) { //product 존재한다면 유저가 입력한 정보가 데이터베이스에 저장
         if (event.reviews.find((x) => x.name === req.user.name)) {
           return res
@@ -159,7 +159,7 @@ eventRouter.post(
           comment: req.body.comment,
         };
         event.reviews.push(review);
-        event.numReviews = product.reviews.length;
+        event.numReviews = event.reviews.length;
         event.rating = 
         event.reviews.reduce((a, c) => c.rating + a, 0) / 
         event.reviews.length;

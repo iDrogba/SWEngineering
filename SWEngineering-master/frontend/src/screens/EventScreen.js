@@ -33,7 +33,7 @@ export default function EventScreen(props)
   useEffect(() => {
     if (successCreate) {
       dispatch({ type: EVENT_CREATE_RESET });
-      props.history.push(`/events/${createdEvent._id}/edit`);
+      props.history.push(`/event/${createdEvent._id}/edit`);
     }
     if (successDelete) {
       dispatch({ type: EVENT_DELETE_RESET });
@@ -71,16 +71,16 @@ export default function EventScreen(props)
         <table className="table">
           <thead>
             <tr>
-              <th>상품 ID</th>
-              <th>이름</th>
-              <th>가격</th>
+              <th>이벤트 ID</th>
+              <th>제목</th>
+              <th>유효기간</th>
               <th>분류</th>
               <th>브랜드</th>
               <th>수정하기</th>
             </tr>
           </thead>
           <tbody>
-            {events && events.map((event) => (
+            {events.map((event) => (
               <tr key={event._id}>
                 <td>{event._id}</td>
                 <td>{event.name}</td>
@@ -92,7 +92,7 @@ export default function EventScreen(props)
                     type="button"
                     className="small"
                     onClick={() =>
-                      props.history.push(`/events/${event._id}/edit`)
+                      props.history.push(`/event/${event._id}/edit`)
                     }
                   >
                     변경

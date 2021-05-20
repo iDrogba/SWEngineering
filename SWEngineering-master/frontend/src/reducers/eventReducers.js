@@ -34,7 +34,7 @@ export const eventsListReducer = (state = {loading:true, events: []}, action) =>
         case EVENT_LIST_REQUEST:
             return {loading: true};
         case EVENT_LIST_SUCCESS:
-            return {loading: false, products: action.payload};
+            return {loading: false, events: action.payload};
         case EVENT_LIST_FAIL:
             return {loading: false, error: action.payload};
         default:
