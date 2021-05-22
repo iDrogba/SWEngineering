@@ -90,8 +90,8 @@ eventRouter.post(
     isAdmin,
     expressAsyncHandler(async (req, res) => {
       const event = new Event({
-        name: 'sample name ' + Date.now(),
-        image: 'https://cdn.pixabay.com/photo/2018/08/13/21/42/gedeckter-table-3604064_1280.jpg',
+        name: 'sample name ',
+        image: 'sample image',
         price: 0,
         category: 'sample category',
         brand: 'sample brand',

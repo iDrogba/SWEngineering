@@ -71,22 +71,18 @@ export default function EventScreen(props)
         <table className="table">
           <thead>
             <tr>
-              <th>이벤트 ID</th>
               <th>제목</th>
-              <th>유효기간</th>
-              <th>분류</th>
-              <th>브랜드</th>
+              <th>진행기간</th>
+              <th>상세내용</th>
               <th>수정하기</th>
             </tr>
           </thead>
           <tbody>
             {events.map((event) => (
               <tr key={event._id}>
-                <td>{event._id}</td>
                 <td>{event.name}</td>
                 <td>{event.price}</td>
-                <td>{event.category}</td>
-                <td>{event.brand}</td>
+                <td>{event.description}</td>
                 <td>
                   <button
                     type="button"

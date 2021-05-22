@@ -90,8 +90,8 @@ export default function EventEditScreen(props) {
     <div>
       <form className="form" onSubmit={submitHandler}>
         <div>
+          <br></br>
           <h1>이벤트 생성 및 변경</h1>
-          <h2>글 번호: {eventId}</h2>
         </div>
         {loadingUpdate && <LoadingBox></LoadingBox>}
         {errorUpdate && <MessageBox variant="danger">{errorUpdate}</MessageBox>}
@@ -132,7 +132,7 @@ export default function EventEditScreen(props) {
               ></input>
             </div>
             <div>
-              <label htmlFor="imageFile">이미지 찾기</label>
+              <label htmlFor="imageFile">이미지 업로드</label>
               <input
                 type="file"
                 id="imageFile"
@@ -144,26 +144,7 @@ export default function EventEditScreen(props) {
                 <MessageBox variant="danger">{errorUpload}</MessageBox>
               )}
             </div>
-            <div>
-              <label htmlFor="category">분류</label>
-              <input
-                id="category"
-                type="text"
-                placeholder="Enter category"
-                value={category}
-                onChange={(e) => setCategory(e.target.value)}
-              ></input>
-            </div>
-            <div>
-              <label htmlFor="brand">브랜드</label>
-              <input
-                id="brand"
-                type="text"
-                placeholder="Enter brand"
-                value={brand}
-                onChange={(e) => setBrand(e.target.value)}
-              ></input>
-            </div>
+            
             <div>
               <label htmlFor="countInStock">재고</label>
               <input

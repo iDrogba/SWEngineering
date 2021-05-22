@@ -24,6 +24,7 @@ import UserListScreen from './screens/UserListScreen';
 import UserEditScreen from './screens/UserEditScreen';
 import EventScreen from './screens/EventScreen';
 import EventEditScreen from './screens/EventEditScreen';
+import EventDetailScreen from './screens/EventDetailScreen';
 import SearchBox from './components/SearchBox';
 import SearchScreen from './screens/SearchScreen';
 import { listProductCategories } from './actions/productActions';

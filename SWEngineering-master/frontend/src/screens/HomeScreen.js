@@ -4,11 +4,17 @@ import React, { useEffect } from 'react';
 import 'react-responsive-carousel/lib/styles/carousel.min.css';
 import { Carousel } from 'react-responsive-carousel';
 import Product from '../components/Product';
+import Event from '../components/Event';
 import LoadingBox from '../components/LoadingBox';
 import MessageBox from '../components/MessageBox';
 import { useDispatch, useSelector} from 'react-redux';
 import { listProducts } from '../actions/productActions';
 import { listTopSellers } from '../actions/productActions';
+import {
+  createEvent,
+  deleteEvent,
+  listEvents,
+} from '../actions/eventActions';
 import { Link } from 'react-router-dom';
 
 export default function HomeScreen() {
@@ -18,9 +24,9 @@ export default function HomeScreen() {
 
   const productTopSellersList = useSelector((state) => state.productTopSellersList);
   const { 
-    loading: loadingSellers, 
-    error: errorSellers, 
-    products: sellers,
+    loading: loadingEvents, 
+    error: errorEvents, 
+    products: events,
   } = productTopSellersList;
 
   useEffect(() => {
@@ -31,17 +37,17 @@ export default function HomeScreen() {
         /* Top Seller */
         <div className="topseller_main">
           <h2>이벤트 및 공지</h2>
-          {loadingSellers? (<LoadingBox></LoadingBox>) 
-          : errorSellers ? (<MessageBox variant="danger">{error}</MessageBox>)
+          {loadingEvents? (<LoadingBox></LoadingBox>) 
+          : errorEvents ? (<MessageBox variant="danger">{error}</MessageBox>)
           : (
             <>
-            {sellers.length === 0 && <MessageBox>No Seller Found</MessageBox>}
+            {events.length === 0 && <MessageBox>No Seller Found</MessageBox>}
             <Carousel showArrows autoPlay showThumbs={false}>
-              {sellers.map((seller) => (
-                <div key={seller._id}>
-                  <Link to={`/product/${seller._id}`}>
-                    <img src={seller.image} alt={seller.name}/>
-                    <p className="legend">{seller.name}</p>
+              {events.map((event) => (
+                <div key={event._id}>
+                  <Link to={`/event/${event._id}/`}>
+                    <img src={event.image} alt={event.name}/>
+                    <p className="legend">{event.name}</p>
                   </Link>
                 </div>
               ))}
