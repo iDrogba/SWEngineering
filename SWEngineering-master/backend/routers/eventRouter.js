@@ -90,15 +90,15 @@ eventRouter.post(
     isAdmin,
     expressAsyncHandler(async (req, res) => {
       const event = new Event({
-        name: 'sample name ',
-        image: 'sample image',
+        name: '제목',
+        image: '이미지 링크를 올려주세요',
         price: 0,
         category: 'sample category',
         brand: 'sample brand',
         countInStock: 0,
         rating: 0,
         numReviews: 0,
-        description: 'sample description',
+        description: '상세 내용을 입력하세요',
       });
       const createdEvent = await event.save();
       res.send({ message: 'Event Created', event: createdEvent });
@@ -111,7 +111,7 @@ eventRouter.post(
     expressAsyncHandler(async (req, res) => {
       const eventId = req.params.id;
       const event = await Event.findById(eventId);
-      if (event) { //product 존재한다면 유저가 입력한 정보가 데이터베이스에 저장
+      if (event) { //event 존재한다면 유저가 입력한 정보가 데이터베이스에 저장
         event.name = req.body.name;
         event.price = req.body.price;
         event.image = req.body.image;
@@ -121,7 +121,7 @@ eventRouter.post(
         event.description = req.body.description;
         const updatedEvent = await event.save();
         res.send({ message: 'Event Updated', event: updatedEvent });
-      } else { //if product does not exist.
+      } else { //if event does not exist.
         res.status(404).send({ message: 'Event Not Found' });
       }
     })
@@ -147,7 +147,7 @@ eventRouter.post(
     expressAsyncHandler(async (req, res) => {
       const eventId = req.params.id;
       const event = await Event.findById(eventId);
-      if (event) { //product 존재한다면 유저가 입력한 정보가 데이터베이스에 저장
+      if (event) { //event 존재한다면 유저가 입력한 정보가 데이터베이스에 저장
         if (event.reviews.find((x) => x.name === req.user.name)) {
           return res
             .status(400)

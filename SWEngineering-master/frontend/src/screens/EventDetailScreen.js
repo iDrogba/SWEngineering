@@ -18,6 +18,11 @@ export default function EventDetailScreen(props) {
     const userSignin = useSelector((state) => state.userSignin);
     const { userInfo } = userSignin;
 
+    useEffect(() => {
+      
+      dispatch(detailsEvent(eventId));
+    }, [dispatch, eventId]);
+
  
 
   

@@ -45,7 +45,7 @@ export default function EventEditScreen(props) {
   }, [event, dispatch, eventId, successUpdate, props.history]); // 이 각각의 변수에 변화가 있을 때 다시 업데이트됨.
   const submitHandler = (e) => {
     e.preventDefault();
-    // TODO: dispatch update product
+    // TODO: dispatch update event
     dispatch(
       updateEvent({
         _id: eventId,
@@ -112,7 +112,7 @@ export default function EventEditScreen(props) {
               ></input>
             </div>
             <div>
-              <label htmlFor="price">날짜</label>
+              <label htmlFor="price">진행기간</label>
               <input
                 id="price"
                 type="text"
@@ -143,17 +143,6 @@ export default function EventEditScreen(props) {
               {errorUpload && (
                 <MessageBox variant="danger">{errorUpload}</MessageBox>
               )}
-            </div>
-            
-            <div>
-              <label htmlFor="countInStock">재고</label>
-              <input
-                id="countInStock"
-                type="text"
-                placeholder="Enter countInStock"
-                value={countInStock}
-                onChange={(e) => setCountInStock(e.target.value)}
-              ></input>
             </div>
             <div>
               <label htmlFor="description">상세 설명</label>

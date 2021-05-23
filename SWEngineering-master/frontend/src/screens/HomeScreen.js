@@ -44,10 +44,10 @@ export default function HomeScreen() {
             {events.length === 0 && <MessageBox>No Seller Found</MessageBox>}
             <Carousel showArrows autoPlay showThumbs={false}>
               {events.map((event) => (
-                <div key={event._id}>
+                <div key={event._id} className="event_box">
                   <Link to={`/event/${event._id}/`}>
                     <img src={event.image} alt={event.name}/>
-                    <p className="legend">{event.name}</p>
+                    
                   </Link>
                 </div>
               ))}
