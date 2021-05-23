@@ -131,7 +131,8 @@ export default function EventEditScreen(props) {
                 onChange={(e) => setImage(e.target.value)}
               ></input>
             </div>
-            <div>
+            {/* 이미지 업로드가 제대로 안되는데 아직 해결 방안을 찾지 못해 일단은 주석처리 해놓습니다. 이미지를 링크 형태로 업로드 하는 것은 정상 작동되어 일단은 위에 부분만 남겨놓았습니다. */}
+            {/* <div>
               <label htmlFor="imageFile">이미지 업로드</label>
               <input
                 type="file"
@@ -143,7 +144,7 @@ export default function EventEditScreen(props) {
               {errorUpload && (
                 <MessageBox variant="danger">{errorUpload}</MessageBox>
               )}
-            </div>
+            </div> */}
             <div>
               <label htmlFor="description">상세 설명</label>
               <textarea

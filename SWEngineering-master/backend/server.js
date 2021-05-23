@@ -18,7 +18,8 @@ const app = express();
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-mongoose.connect(process.env.MONGODB_URL || 'mongodb://localhost/SWEngineering', {
+//mongodb cloud 랑 연결하였습니다. 아이디는 Admin 이고 비밀번호는 swe23
+mongoose.connect(process.env.MONGODB_URL || 'mongodb+srv://Admin:swe23@cluster0.vxyem.mongodb.net/SWEngineering?retryWrites=true&w=majority', {
   useNewUrlParser: true,
   useUnifiedTopology: true,
   useCreateIndex: true,
