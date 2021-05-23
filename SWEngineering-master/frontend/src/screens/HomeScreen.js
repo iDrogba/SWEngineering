@@ -47,7 +47,7 @@ export default function HomeScreen() {
                 <div key={event._id} className="event_box">
                   <Link to={`/event/${event._id}/`}>
                     <img src={event.image} alt={event.name}/>
-                    
+                    <p className="legend">{event.name}</p>
                   </Link>
                 </div>
               ))}
