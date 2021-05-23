@@ -82,7 +82,7 @@ export default function ProductScreen(props) {
                     numReviews={product.numReviews}
                   ></Rating>
                 </li>
-                <li>가격 : ${product.price}</li>
+                <li>가격 : {product.price}원</li>
                 <li>
                   상품설명:
                   <p>{product.description}</p>
@@ -95,7 +95,7 @@ export default function ProductScreen(props) {
                   <li>
                     <div className="row">
                       <div>가격</div>
-                      <div className="price">${product.price}</div>
+                      <div className="price">{product.price}원</div>
                     </div>
                   </li>
                   <li>

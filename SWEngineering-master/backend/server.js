@@ -9,6 +9,8 @@ import userRouter from './routers/userRouter.js';
 import dotenv from 'dotenv';
 import orderRouter from './routers/orderRouter.js';
 import uploadRouter from './routers/uploadRouter.js';
+import eventRouter from './routers/eventRouter.js';
+import uploadRouter2 from './routers/uploadRouter2.js';
 
 dotenv.config();
 
@@ -16,20 +18,27 @@ const app = express();
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-mongoose.connect(process.env.MONGODB_URL || 'mongodb://localhost/SWEngineering', {
+//mongodb cloud 랑 연결하였습니다. 아이디는 Admin 이고 비밀번호는 swe23
+mongoose.connect(process.env.MONGODB_URL || 'mongodb+srv://Admin:swe23@cluster0.vxyem.mongodb.net/SWEngineering?retryWrites=true&w=majority', {
   useNewUrlParser: true,
   useUnifiedTopology: true,
   useCreateIndex: true,
 });
 
 app.use('/api/uploads', uploadRouter);
+app.use('/api/uploads2', uploadRouter2);
 app.use('/api/users', userRouter);
 app.use('/api/products', productRouter);
 app.use('/api/orders', orderRouter);
+app.use('/api/events', eventRouter);
+
 
 
 const __dirname = path.resolve();
 app.use('/uploads', express.static(path.join(__dirname, '/uploads')));
+
+const __dirname2 = path.resolve();
+app.use('/uploads2', express.static(path.join(__dirname2, '/uploads2')));
 
 app.get('/', (req, res) => {
   res.send('Server is ready');
