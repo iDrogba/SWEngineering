@@ -49,7 +49,7 @@ eventRouter.get(
   '/top-sellers', 
   expressAsyncHandler(async (req, res)=> {
     const topSellers = await Event.find({})
-      .sort({'numReviews':-1})
+      .sort({'price':-1})
       .limit(3);
     res.send(topSellers);
   })
