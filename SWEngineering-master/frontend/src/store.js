@@ -13,9 +13,21 @@ import {
   productCreateReducer, 
   productDeleteReducer,
   productDetailsReducer,
+  productReviewCreateReducer,
   productsListReducer, 
+  productTopSellerListReducer, 
   productUpdateReducer,
 } from './reducers/productReducers';
+import {
+  eventCategoryListReducer,
+  eventCreateReducer, 
+  eventDeleteReducer,
+  eventDetailsReducer,
+  eventReviewCreateReducer,
+  eventsListReducer, 
+  eventTopSellerListReducer, 
+  eventUpdateReducer,
+} from './reducers/eventReducers';
 import {   userDeleteReducer,
   userDetailsReducer,  userListReducer,
   userRegisterReducer, userSigninReducer, userTopSellerListReducer, userUpdateProfileReducer,  userUpdateReducer,
@@ -40,6 +52,8 @@ const initialState = {
 const reducer = combineReducers({
     productList: productsListReducer,
     productDetails: productDetailsReducer,
+    eventList: eventsListReducer,
+    eventDetails: eventDetailsReducer,
     cart: cartReducer,
     userSignin: userSigninReducer,
     userRegister: userRegisterReducer,
@@ -52,14 +66,20 @@ const reducer = combineReducers({
     productCreate: productCreateReducer,
     productUpdate: productUpdateReducer,
     productDelete: productDeleteReducer,
+    eventCreate: eventCreateReducer,
+    eventUpdate: eventUpdateReducer,
+    eventDelete: eventDeleteReducer,
     orderList: orderListReducer,
     orderDelete: orderDeleteReducer,
     orderDeliver: orderDeliverReducer,
     userList: userListReducer,
     userDelete: userDeleteReducer,
-    /* Top Seller */
-    userTopSellersList: userTopSellerListReducer,
     productCategoryList: productCategoryListReducer,
+    productTopSellersList: productTopSellerListReducer,
+    productReviewCreate: productReviewCreateReducer,
+    eventCategoryList: eventCategoryListReducer,
+    eventTopSellersList: eventTopSellerListReducer,
+    eventReviewCreate: eventReviewCreateReducer,
 });
 
 const composeEnhancer = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;

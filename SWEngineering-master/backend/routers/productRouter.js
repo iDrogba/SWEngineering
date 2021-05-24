@@ -46,6 +46,16 @@ productRouter.get(
 );
 
 productRouter.get(
+  '/top-sellers', 
+  expressAsyncHandler(async (req, res)=> {
+    const topSellers = await Product.find({})
+      .sort({'numReviews':-1})
+      .limit(3);
+    res.send(topSellers);
+  })
+);
+
+productRouter.get(
   '/categories',
   expressAsyncHandler(async (req, res) => {
     const categories = await Product.find().distinct('category');
@@ -130,4 +140,38 @@ productRouter.post(
       }
     })
   );
+
+  productRouter.post(
+    '/:id/reviews',
+    isAuth,
+    expressAsyncHandler(async (req, res) => {
+      const productId = req.params.id;
+      const product = await Product.findById(productId);
+      if (product) { //product 존재한다면 유저가 입력한 정보가 데이터베이스에 저장
+        if (product.reviews.find((x) => x.name === req.user.name)) {
+          return res
+            .status(400)
+            .send({ message: '이미 후기를 작성했습니다.' });
+        }
+        const review = {
+          name: req.user.name, 
+          rating: Number(req.body.rating), 
+          comment: req.body.comment,
+        };
+        product.reviews.push(review);
+        product.numReviews = product.reviews.length;
+        product.rating = 
+          product.reviews.reduce((a, c) => c.rating + a, 0) / 
+          product.reviews.length;
+        const updatedProduct = await product.save();
+        res.status(201).send({ 
+            message: '리뷰 작성 완료', 
+            review: updatedProduct.reviews[updatedProduct.reviews.length - 1], 
+          });
+      } else { //if product does not exist.
+        res.status(404).send({ message: '상품을 찾을 수 없습니다.' });
+      }
+    })
+  );
+
 export default productRouter;

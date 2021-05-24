@@ -17,6 +17,12 @@ import { PRODUCT_DETAILS_FAIL,
          PRODUCT_CATEGORY_LIST_SUCCESS,
          PRODUCT_CATEGORY_LIST_REQUEST,
          PRODUCT_CATEGORY_LIST_FAIL,
+         PRODUCT_TOPSELLERS_LIST_REQUEST,
+         PRODUCT_TOPSELLERS_LIST_SUCCESS,
+         PRODUCT_TOPSELLERS_LIST_FAIL,
+         PRODUCT_REVIEW_CREATE_REQUEST,
+         PRODUCT_REVIEW_CREATE_SUCCESS,
+         PRODUCT_REVIEW_CREATE_FAIL,
         } from "../constants/productConstants"
 
 
@@ -130,3 +136,42 @@ export const detailsProduct = (productId) => async (dispatch) => {
       dispatch({ type: PRODUCT_DELETE_FAIL, payload: message });
     }
   };
+
+  export const listTopSellers = () => async (dispatch) => {
+    dispatch({
+        type: PRODUCT_TOPSELLERS_LIST_REQUEST
+    });
+    try {
+        const { data } = await Axios.get(
+          '/api/events/top-sellers');
+        dispatch({type: PRODUCT_TOPSELLERS_LIST_SUCCESS , payload : data});
+    } catch (error) {
+        dispatch({type: PRODUCT_TOPSELLERS_LIST_FAIL, payload: error.message});
+    }
+}
+
+export const createReview = (productId, review) => async (dispatch, getState) => {
+  dispatch({ type: PRODUCT_REVIEW_CREATE_REQUEST });
+  const {
+    userSignin: { userInfo },
+  } = getState();
+  try {
+    const { data } = await Axios.post(
+      `/api/products/${productId}/reviews`,
+      review,
+      {
+        headers: { Authorization: `Bearer ${userInfo.token}` },
+      }
+    );
+    dispatch({
+      type: PRODUCT_REVIEW_CREATE_SUCCESS,
+      payload: data.review,
+    });
+  } catch (error) {
+    const message =
+      error.response && error.response.data.message
+        ? error.response.data.message
+        : error.message;
+    dispatch({ type: PRODUCT_REVIEW_CREATE_FAIL, payload: message });
+  }
+};

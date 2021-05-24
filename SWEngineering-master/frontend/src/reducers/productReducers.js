@@ -20,6 +20,13 @@ import {
     PRODUCT_CATEGORY_LIST_REQUEST,
     PRODUCT_CATEGORY_LIST_SUCCESS,
     PRODUCT_CATEGORY_LIST_FAIL,
+    PRODUCT_TOPSELLERS_LIST_REQUEST,
+    PRODUCT_TOPSELLERS_LIST_SUCCESS,
+    PRODUCT_TOPSELLERS_LIST_FAIL,
+    PRODUCT_REVIEW_CREATE_REQUEST,
+    PRODUCT_REVIEW_CREATE_SUCCESS,
+    PRODUCT_REVIEW_CREATE_FAIL,
+    PRODUCT_REVIEW_CREATE_RESET,
   } from "../constants/productConstants";
 
 export const productsListReducer = (state = {loading:true, products: []}, action) => {
@@ -106,3 +113,31 @@ export const productDetailsReducer = (state = { loading: true }, action) => {
         return state;
     }
   };
+
+  export const productTopSellerListReducer = (state = {loading:true, products: []}, action) => {
+    switch(action.type){
+        case PRODUCT_TOPSELLERS_LIST_REQUEST:
+            return {loading: true};
+        case PRODUCT_TOPSELLERS_LIST_SUCCESS:
+            return {loading: false, products: action.payload};
+        case PRODUCT_TOPSELLERS_LIST_FAIL:
+            return {loading: false, error: action.payload};
+        default:
+            return state;
+        }   
+};
+
+export const productReviewCreateReducer = (state = {}, action) => {
+  switch (action.type) {
+    case PRODUCT_REVIEW_CREATE_REQUEST:
+      return { loading: true };
+    case PRODUCT_REVIEW_CREATE_SUCCESS:
+      return { loading: false, success: true, review: action.payload };
+    case PRODUCT_REVIEW_CREATE_FAIL:
+      return { loading: false, error: action.payload };
+    case PRODUCT_REVIEW_CREATE_RESET:
+      return {};
+    default:
+      return state;
+  }
+};
