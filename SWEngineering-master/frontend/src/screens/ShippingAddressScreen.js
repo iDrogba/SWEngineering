@@ -17,11 +17,30 @@ export default function ShippingAddressScreen(props) {
     const [postalCode, setPostalCode] = useState(shippingAddress.postalCode);
     const [country, setCountry] = useState(shippingAddress.country);
     const dispatch = useDispatch();
+
     const submitHandler = (e) => {
         e.preventDefault();
+        
+        var citypattern = city.search(/[a-z]|[ \[\]{}()<>?|`~!@#$%^&*_+=,.;:\"'\\]/g);
+        var countrypattern = 0;
+
+       for(var i=0;i<country.length;i++){
+           if(47<country.charAt(i)||country.charAt(i)<58){
+             countrypattern++;
+           }
+       }
+
+        if(citypattern>=0){
+            alert("상세주소 형식이 옳지 않습니다.")
+        }else if(country.length !== countrypattern){
+            alert("연락처 형식이 옳지 않습니다.")
+        }
+        else {
         dispatch(saveShippingAddress({fullName, address, city, postalCode, country}));
         props.history.push('/payment')
         //dispatch save shipping address action
+        }
+    
     };
     return (
         <div>
@@ -35,20 +54,20 @@ export default function ShippingAddressScreen(props) {
                     <input type="text" id="fullName" placeholder="이름을 입력해주세요" value={fullName} onChange={(e) => setFullName(e.target.value)} required></input>
                 </div>
                 <div>
-                    <label htmlFor="address">주소</label>
-                    <input type="text" id="address" placeholder="주소를 입력해주세요" value={address} onChange={(e) => setAddress(e.target.value)} required></input>
+                    <label htmlFor="address">기본주소</label>
+                    <input type="text" id="address" placeholder="기본주소를 입력해주세요(검색)" value={address} onChange={(e) => setAddress(e.target.value)} required></input>
                 </div>
                 <div>
-                    <label htmlFor="city">시/도</label>
-                    <input type="text" id="city" placeholder="도시를 입력해주세요" value={city} onChange={(e) => setCity(e.target.value)} required></input>
+                    <label htmlFor="city">상세주소</label>
+                    <input type="text" id="city" placeholder="상세주소를 입력해주세요" value={city} onChange={(e) => setCity(e.target.value)} required></input>
                 </div>
                 <div>
                     <label htmlFor="postalCode">우편번호</label>
-                    <input type="text" id="postalCode" placeholder="우편번호를 입력해주세요" value={postalCode} onChange={(e) => setPostalCode(e.target.value)} required></input>
+                    <input type="text" id="postalCode" placeholder="우편번호를 입력해주세요(검색)" value={postalCode} onChange={(e) => setPostalCode(e.target.value)} required></input>
                 </div>
                 <div>
-                    <label htmlFor="country">국가</label>
-                    <input type="text" id="country" placeholder="국가를 입력해주세요" value={country} onChange={(e) => setCountry(e.target.value)} required></input>
+                    <label htmlFor="country">배송시 연락처</label>
+                    <input type="text" id="country" placeholder="배송시 연락처를 입력해주세요" value={country} onChange={(e) => setCountry(e.target.value)} required></input>
                 </div>
                 <div>
                     <label/>
@@ -59,4 +78,4 @@ export default function ShippingAddressScreen(props) {
             </form>
         </div>
     );
-}
+    }
