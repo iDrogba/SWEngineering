@@ -385,3 +385,18 @@ button.close-sidebar {
 
   margin-top: 60px;
 }
+
+/* Pagination */
+.pagination a {
+  padding: 1rem;
+  margin: 0.5rem;
+  border-radius: 0.5rem;
+  border: 0.1rem #a4a4a4 solid;
+  font-size: 1.6rem;                          /* 1.6rem으로 16px */
+  font-family: Helvetica, Arial, sans-serif;  /* 폰트 , 기본값 , 상속 요소 */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+.pagination a.active {
+  font-weight: bold;
+}

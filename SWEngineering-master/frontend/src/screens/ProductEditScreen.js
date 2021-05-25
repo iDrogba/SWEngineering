@@ -46,6 +46,7 @@ export default function ProductEditScreen(props) {
   const submitHandler = (e) => {
     e.preventDefault();
     // TODO: dispatch update product
+    if(name && price && image && category && brand && countInStock && description) {
     dispatch(
       updateProduct({
         _id: productId,
@@ -58,7 +59,11 @@ export default function ProductEditScreen(props) {
         description,
       })
     );
+    } else {
+      alert('공란을 작성해주십시오.')
+    }
   };
+
 
   const [loadingUpload, setLoadingUpload] = useState(false);
   const [errorUpload, setErrorUpload] = useState('');

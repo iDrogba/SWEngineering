@@ -9,9 +9,11 @@ const productRouter = express.Router();
 productRouter.get(
     '/', 
     expressAsyncHandler(async(req, res) => {
-        const name = req.query.name || '';
-        const category = req.query.category || '';
-        const order = req.query.order || '';
+      const pageSize = 3;
+      const page = Number(req.query.pageNumber) || 1;
+      const name = req.query.name || '';
+      const category = req.query.category || '';
+      const order = req.query.order || '';
     const min =
       req.query.min && Number(req.query.min) !== 0 ? Number(req.query.min) : 0;
     const max =
@@ -32,16 +34,22 @@ productRouter.get(
         : order === 'toprated'
         ? { rating: -1 }
         : { _id: -1 };
-
+        const count = await Product.count({
+          ...nameFilter,
+          ...categoryFilter,
+          ...priceFilter,
+          ...ratingFilter,
+        });
         const products= await Product.find({
           ...nameFilter,
           ...categoryFilter,
           ...priceFilter,
           ...ratingFilter,
         })
-        .sort(sortOrder);
-        
-        res.send(products);
+        .sort(sortOrder)
+        .skip(pageSize * (page -1))
+        .limit(pageSize);
+      res.send({ products, page, pages: Math.ceil(count / pageSize) });
     })
 );
 
