@@ -54,7 +54,7 @@ function App() {
   }, [dispatch]);
 
   return (
-    <BrowserRouter>
+    <BrowserRouter basename="/">
     <div className="grid-container">
       <header >
         <div className="title">
