@@ -98,7 +98,7 @@ productRouter.post(
     isAdmin,
     expressAsyncHandler(async (req, res) => {
       const product = new Product({
-        name: '상품 이름',
+        name: '상품 이름 ' + Date.now(),
         image: '이미지 링크',
         price: 0,
         category: '카테고리를 입력하세요',
