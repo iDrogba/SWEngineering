@@ -57,7 +57,7 @@ export default function HomeScreen() {
 
 
 
-          <h2> 전체 상품 목록 </h2>
+          <h2> 최근 상품 목록 </h2>
           {loading? (
           <LoadingBox></LoadingBox>
           ) : error ? (
