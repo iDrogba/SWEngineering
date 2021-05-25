@@ -18,12 +18,14 @@ const app = express();
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
+
 //mongodb cloud 랑 연결하였습니다. 아이디는 Admin 이고 비밀번호는 swe23
 mongoose.connect(process.env.MONGODB_URL || 'mongodb+srv://Admin:swe23@cluster0.vxyem.mongodb.net/SWEngineering?retryWrites=true&w=majority', {
   useNewUrlParser: true,
   useUnifiedTopology: true,
   useCreateIndex: true,
-});
+}).then(() => console.log('MongoDB Connected...'))
+.catch(err => console.error(err));
 
 app.use('/api/uploads', uploadRouter);
 app.use('/api/uploads2', uploadRouter2);
@@ -40,9 +42,18 @@ app.use('/uploads', express.static(path.join(__dirname, '/uploads')));
 const __dirname2 = path.resolve();
 app.use('/uploads2', express.static(path.join(__dirname2, '/uploads2')));
 
-app.get('/', (req, res) => {
-  res.send('Server is ready');
-});
+  // Set static folder
+  // All the javascript and css files will be read and served from this folder
+  app.use(express.static("client/build"));
+
+  // index.html for all page routes  html or routing and naviagtion
+  app.get("*", (req, res) => {
+    res.sendFile(path.resolve(__dirname, "../client", "build", "index.html"));
+  });
+
+// app.get('/', (req, res) => {
+//   res.send('Server is ready');
+// });
 
 
 app.use((err, req, res, next) =>{
@@ -52,5 +63,5 @@ app.use((err, req, res, next) =>{
 const port = process.env.PORT || 5000;
 
 app.listen(port, () => {
-    console.log(`Serve at http://localhost:${port}`);
+  console.log(`Server Running at ${port}`)
 });
