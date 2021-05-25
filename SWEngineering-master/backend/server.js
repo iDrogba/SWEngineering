@@ -40,9 +40,13 @@ app.use('/uploads', express.static(path.join(__dirname, '/uploads')));
 const __dirname2 = path.resolve();
 app.use('/uploads2', express.static(path.join(__dirname2, '/uploads2')));
 
-app.get('/', (req, res) => {
-  res.send('Server is ready');
-});
+app.use(express.static(path.join(__dirname, '/frontend/build')));
+app.get('*', (req, res) =>
+  res.sendFile(path.join(__dirname, '/frontend/build/index.html'))
+);
+// app.get('/', (req, res) => {
+//   res.send('Server is ready');
+// });
 
 
 app.use((err, req, res, next) =>{
