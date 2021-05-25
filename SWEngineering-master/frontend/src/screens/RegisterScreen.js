@@ -24,9 +24,19 @@ export default function RegisterScreen(props) {
     const dispatch = useDispatch();
     const submitHandler = (e) => {
         e.preventDefault();
+
+        var num = password.search(/[0-9]/g);
+        var eng = password.search(/[a-z]/ig);
+        var spe = password.search(/[`~!@@#$%^&*|₩₩₩'₩";:₩/?]/gi);
+
         if(password !== confirmPassword) {
             alert('두 비밀번호가 동일하지 않습니다.')
-        } else {
+        }else if(password.length < 8 || password.length > 15) {
+            alert("8자 ~ 15자 이내로 입력해주세요.");
+        }else if(num < 0 || eng < 0 || spe < 0 ){
+            alert("영문,숫자, 특수문자를 혼합하여 입력해주세요.");
+        }
+        else {
             dispatch(register(name, email, password));
         }
     };
@@ -48,7 +58,7 @@ export default function RegisterScreen(props) {
                     <input 
                         type="text" 
                         id="name" 
-                        placeholder="Enter name" 
+                        placeholder="이름을 입력하세요." 
                         required
                         onChange={ e => setName(e.target.value)}
                     ></input>
@@ -58,7 +68,7 @@ export default function RegisterScreen(props) {
                     <input 
                         type="email" 
                         id="email" 
-                        placeholder="Enter email" 
+                        placeholder="Email을 입력하세요." 
                         required
                         onChange={ e => setEmail(e.target.value)}
                     ></input>
@@ -68,7 +78,7 @@ export default function RegisterScreen(props) {
                     <input 
                         type="password" 
                         id="password" 
-                        placeholder="Enter password" 
+                        placeholder="8~15자, 영문, 숫자, 특수문자 혼용 비밀번호를 입력하세요." 
                         required
                         onChange={ e => setPassword(e.target.value)}
                     ></input>
@@ -78,7 +88,7 @@ export default function RegisterScreen(props) {
                     <input 
                         type="password" 
                         id="confirmpassword" 
-                        placeholder="Enter confirm password" 
+                        placeholder="비밀번호를 다시 입력하세요." 
                         required
                         onChange={ e => setConfirmPassword(e.target.value)}
                     ></input>

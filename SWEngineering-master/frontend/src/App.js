@@ -22,6 +22,9 @@ import ProductEditScreen from './screens/ProductEditScreen'
 import OrderListScreen from './screens/OrderListScreen';
 import UserListScreen from './screens/UserListScreen';
 import UserEditScreen from './screens/UserEditScreen';
+import EventScreen from './screens/EventScreen';
+import EventEditScreen from './screens/EventEditScreen';
+import EventDetailScreen from './screens/EventDetailScreen';
 import SearchBox from './components/SearchBox';
 import SearchScreen from './screens/SearchScreen';
 import { listProductCategories } from './actions/productActions';
@@ -122,6 +125,9 @@ function App() {
                   <li>
                     <Link to="/userlist">사용자</Link>
                   </li>
+                  <li>
+                    <Link to="/event">이벤트 관리</Link>
+                  </li>
                 </ul>
               </div>
             )}
@@ -161,6 +167,7 @@ function App() {
         <Route path="/cart/:id?" component={CartScreen}></Route>
         <Route path="/product/:id" component={ProductScreen} exact></Route>
         <Route path="/product/:id/edit" component={ProductEditScreen} exact></Route>
+        <Route path="/event/:id/edit" component={EventEditScreen} exact></Route>
         <Route path="/signin" component={SigninScreen}></Route>
         <Route path="/register" component={RegisterScreen}></Route>
         <Route path="/shipping" component={ShippingAddressScreen}></Route>
@@ -201,6 +208,10 @@ function App() {
             path="/productlist/pageNumber/:pageNumber"
             component={ProductListScreen}
             exact
+        ></AdminRoute>
+        <AdminRoute
+            path="/event"
+            component={EventScreen}
         ></AdminRoute>
          <AdminRoute
             path="/orderlist"

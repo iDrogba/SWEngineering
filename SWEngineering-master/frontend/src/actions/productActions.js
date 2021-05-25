@@ -144,7 +144,7 @@ export const detailsProduct = (productId) => async (dispatch) => {
     });
     try {
         const { data } = await Axios.get(
-          '/api/products/top-sellers');
+          '/api/events/top-sellers');
         dispatch({type: PRODUCT_TOPSELLERS_LIST_SUCCESS , payload : data});
     } catch (error) {
         dispatch({type: PRODUCT_TOPSELLERS_LIST_FAIL, payload: error.message});
