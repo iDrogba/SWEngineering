@@ -90,7 +90,7 @@ eventRouter.post(
     isAdmin,
     expressAsyncHandler(async (req, res) => {
       const event = new Event({
-        name: '제목',
+        name: '제목 ' + Date.now(),
         image: '이미지 링크를 올려주세요',
         price: 0,
         category: 'sample category',
