@@ -20,7 +20,7 @@ import { Link } from 'react-router-dom';
 export default function HomeScreen() {
   const dispatch = useDispatch();
   const productList = useSelector(state => state.productList);
-  const { loading, error , products} = productList;
+  const { loading, error , products } = productList;
 
   const productTopSellersList = useSelector((state) => state.productTopSellersList);
   const { 
