@@ -5,19 +5,19 @@ export const prices = [
       max: 0,
     },
     {
-      name: `$1 부터 $10`,
-      min: 1,
-      max: 10,
+      name: `10000원 부터 20000원`,
+      min: 10000,
+      max: 20000,
     },
     {
-      name: `$10 부터 $100`,
-      min: 10,
-      max: 100,
+      name: `20000원 부터 30000원`,
+      min: 20000,
+      max: 30000,
     },
     {
-      name: `$100 부터 $1000`,
-      min: 100,
-      max: 1000,
+      name: `30000원 부터 40000원`,
+      min: 30000,
+      max: 40000,
     },
   ];
   export const ratings = [
