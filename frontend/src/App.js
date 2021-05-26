@@ -225,7 +225,11 @@ function App() {
         <Route path="/" component={HomeScreen} exact></Route>
 
       </main>
-      <footer className="row center">23조 All rights reserved</footer>
+      <footer className="row center">주식회사 seoultech living | 서울과학기술대학교 미래관 | 사업자등록번호 : 1234-5678 |
+통신판매업 : 2021-서울노원-12345 | 개인정보관리책임자 : 김상현(kshy1019@naver.com) 
+<br/>
+일부 상품의 경우 주식회사 seoultechliving은 통신판매의 당사자가 아닌 통신판매중개자로서 
+상품, 상품정보, 거래에 대한 책임이 제한될 수 있으므로, 각 상품 페이지에서 구체적인 내용을 확인하시기 바랍니다.</footer>
     </div>
     </BrowserRouter>
   );
