@@ -1,6 +1,5 @@
 {
   "name": "frontend",
-  "homepage": "http://www.23engineering.com",
   "proxy": "http://127.0.0.1:5000",
   "version": "0.1.0",
   "private": true,
@@ -11,6 +10,7 @@
     "axios": "^0.21.1",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
+    "react-paypal-button-v2": "^2.6.3",
     "react-redux": "^7.2.3",
     "react-responsive-carousel": "^3.2.18",
     "react-router-dom": "^5.2.0",

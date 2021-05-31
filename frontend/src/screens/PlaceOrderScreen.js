@@ -40,10 +40,10 @@ import React, { useEffect }  from 'react';
            <ul>
              <li>
                <div className="card card-body">
-                 <h2>배송</h2>
+                 <h2>배송확인</h2>
                  <p>
-                   <strong>Name:</strong> {cart.shippingAddress.fullName} <br />
-                   <strong>Address: </strong> {cart.shippingAddress.address},
+                   <strong>이름:</strong> {cart.shippingAddress.fullName} <br />
+                   <strong>주소: </strong> {cart.shippingAddress.address},
                    {cart.shippingAddress.city}, {cart.shippingAddress.postalCode}
                    ,{cart.shippingAddress.country}
                  </p>
@@ -53,7 +53,7 @@ import React, { useEffect }  from 'react';
                <div className="card card-body">
                  <h2>결제</h2>
                  <p>
-                   <strong>Method:</strong> {cart.paymentMethod}
+                   <strong>방법:</strong> {cart.paymentMethod}
                  </p>
                </div>
              </li>
@@ -78,7 +78,7 @@ import React, { useEffect }  from 'react';
                          </div>
 
                          <div>
-                           {item.qty} x ${item.price} = ${item.qty * item.price}
+                           {item.qty} x {item.price} = {item.qty * item.price}원
                          </div>
                        </div>
                      </li>
@@ -97,13 +97,13 @@ import React, { useEffect }  from 'react';
                <li>
                  <div className="row">
                    <div>상품</div>
-                   <div>${cart.itemsPrice.toFixed(2)}</div>
+                   <div>{cart.itemsPrice}원</div>
                  </div>
                </li>
                <li>
                  <div className="row">
                    <div>배송</div>
-                   <div>${cart.shippingPrice.toFixed(2)}</div>
+                   <div>{cart.shippingPrice}원</div>
                  </div>
                </li>
                <li>
@@ -112,7 +112,7 @@ import React, { useEffect }  from 'react';
                      <strong> 주문 합계</strong>
                    </div>
                    <div>
-                     <strong>${cart.totalPrice.toFixed(2)}</strong>
+                     <strong>{cart.totalPrice}원</strong>
                    </div>
                  </div>
                </li>
@@ -123,7 +123,7 @@ import React, { useEffect }  from 'react';
                    className="primary block"
                    disabled={cart.cartItems.length === 0}
                  >
-                   Place Order
+                   주문하기
                  </button>
                </li>
                {loading && <LoadingBox></LoadingBox>}

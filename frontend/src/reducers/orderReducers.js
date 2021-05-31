@@ -9,7 +9,10 @@ import {
     ORDER_MINE_LIST_FAIL,
     ORDER_MINE_LIST_REQUEST,
     ORDER_MINE_LIST_SUCCESS,
-    //PAY 관련 아직 추가 안됨
+    ORDER_PAY_FAIL,
+    ORDER_PAY_REQUEST,
+    ORDER_PAY_RESET,
+    ORDER_PAY_SUCCESS,
     ORDER_LIST_REQUEST,
     ORDER_LIST_SUCCESS,
     ORDER_LIST_FAIL,
@@ -38,6 +41,21 @@ import {
         return state;
     }
   };
+  export const orderPayReducer = (state = {}, action) => {
+    switch (action.type) {
+      case ORDER_PAY_REQUEST:
+        return { loading: true };
+      case ORDER_PAY_SUCCESS:
+        return { loading: false, success: true };
+      case ORDER_PAY_FAIL:
+        return { loading: false, error: action.payload };
+      case ORDER_PAY_RESET:
+        return {};
+      default:
+        return state;
+    }
+  };
+
   export const orderDetailsReducer = (state = { loading: true }, action) => {
     switch (action.type) {
       case ORDER_DETAILS_REQUEST:

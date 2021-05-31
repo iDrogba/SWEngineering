@@ -400,3 +400,7 @@ button.close-sidebar {
 .pagination a.active {
   font-weight: bold;
 }
+.alert-success {
+  color: #20a020;
+  background-color: #eeffe0;
+}
