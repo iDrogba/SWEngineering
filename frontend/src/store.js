@@ -6,6 +6,7 @@ import {
   orderDeleteReducer,
   orderDeliverReducer,
   orderDetailsReducer, 
+  orderPayReducer,
   orderListReducer,
   orderMineListReducer, } from './reducers/orderReducers';
 import {
@@ -46,7 +47,7 @@ const initialState = {
         : [],
         // 뒤로가기 해서 배송지 화면으로 갔을 때 버퍼에 저장된 입력값 보여줌.
         shippingAddress: localStorage.getItem('shippingAddress')? JSON.parse(localStorage.getItem('shippingAddress')): {},
-        paymentMethod: 'KakaoPay',
+        paymentMethod: 'PayPal',
       },
   };
 const reducer = combineReducers({
@@ -59,6 +60,7 @@ const reducer = combineReducers({
     userRegister: userRegisterReducer,
     orderCreate: orderCreateReducer,
     orderDetails: orderDetailsReducer,
+    orderPay: orderPayReducer,
     orderMineList: orderMineListReducer,
     userDetails: userDetailsReducer,
     userUpdateProfile: userUpdateProfileReducer,
